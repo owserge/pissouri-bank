@@ -1,4 +1,4 @@
-# The Server Side of things
+# The Server Side of Things
 
 ### Account and Transfer Currency
 
