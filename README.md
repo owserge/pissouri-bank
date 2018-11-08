@@ -24,3 +24,4 @@ This is about a group of people experimenting with technologies. If you came her
 ### API docs
 
 * Server-side (API) documentation [here](./server/README.md)
+* How to install and run the backend [here](./server/INSTALL.md) 
