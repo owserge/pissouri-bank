@@ -6,8 +6,8 @@ Mobile Banking made in Pissouri, Paphos
 Pissouri Bank is an established modern banking institution based in Pissouri, Cyprus.
 They offer a variety of services, one of which is being able to wire and receive money via their innovative cross-platform mobile application.
 
-Their mobile app is develoved using `React Native`, retrieving the information from their backend APIs. 
-Their server-side systems use `Java` and they're powered by `Spring`.
+Their mobile app is develoved using [React Native](https://facebook.github.io/react-native/), retrieving the information from their backend APIs. 
+Their server-side systems use `Java` and they're powered by [Spring](https://spring.io).
 
 ### What is this about, really?
 
@@ -21,7 +21,7 @@ This is about a group of people experimenting with technologies. If you came her
 * `samples`  sample configuration files, log files, etc
 * `build`    artifacts of the end-result
 
-### API docs
+### Server-Side
 
 * Server-side (API) documentation [here](./server/README.md)
 * How to install and run the backend [here](./server/INSTALL.md) 

@@ -1,4 +1,4 @@
-# The Server Side of things
+# The Server Side of Things
 
 ### Account and Transfer Currency
 
@@ -248,4 +248,4 @@ Money transfers in any other currency
 * `sort_code` will be empty
 * `swift_code` will be empty
 
-#### To be continued...
+#### ...
