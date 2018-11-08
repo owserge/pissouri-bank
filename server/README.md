@@ -14,8 +14,11 @@ Currencies are always represented with their _alpha 3_ code (i.e. `EUR`, `GBP`, 
 
 ### Transfer Direction
 
-Bank transfers can be INCOMING (account received money) or OUTGOING (account sent money out).
-You can identify the transfer direction by looking at the transfer amount - If the amount is negative then the transfer is OUTGOING, if it is positive then the transfer is INCOMING.
+Bank transfers can be `INCOMING` (account received money) or `OUTGOING` (account sent money out).
+
+You can identify the transfer direction by looking at the transfer amount: 
+* If the amount is _negative_, the transfer is `OUTGOING`
+* If the amount is _positive_, then the transfer is `INCOMING`
 
 ### Transfer Status
 
@@ -24,6 +27,50 @@ Bank transfers can be in one of three statuses:
 * `PENDING`:  The transfer looks good but has not been processed yet
 * `ACCEPTED`: The transfer has been processed and is considered completed
 * `REJECTED`: The transfer has been rejected by Pissouri bank and will not be processed
+
+### API Status Codes
+
+All API responses include a `status_code` field. 
+
+| Code | Description |
+| -----|-------------|
+| 2000 | Success, all is good |
+| 4000 | Client error, e.g. params invalid |
+| 5000 | Server error, something went wrong |
+
+A status message may be included in the response, in a field named `status_text`. This message can be used for debugging and may include a more specific error message.
+
+The response information is always encapsulated in a `data` field.
+
+#### Examples
+
+```javascript
+{
+    "status_code": 2000,
+    "status_text": "ok",
+    "data": {
+    	...
+    }
+}
+```
+
+```javascript
+{
+    "status_code": 4000,
+    "status_text": "Invalid value for parameter 'type'",
+    "data": {
+    }
+}
+```
+
+```javascript
+{
+    "status_code": 5000,
+    "status_text": "Please try again later",
+    "data": {
+    }
+}
+```
 
 ### Account Information Endpoint:
 
@@ -37,15 +84,15 @@ The endpoint returns a single resource which includes all information for an acc
 Example response:
 ```javascript
 {
-	"status_code":
+	"status_code": 2000,
 	"status_text": "ok",
 	"data":
 	{
-		"id":
-		"number":
+		"id": 42,
+		"number": "PB100042",
 		"balance": 345780,
 		"currency": "EUR"
-		"reference": "",
+		"reference": "6c7151bc-ed6e-4980-ae80-73ac1d4ea282",
 		"registration": {
 			"first_name": "John", 
 			"last_name": "Cash",
@@ -58,14 +105,14 @@ Example response:
 				"postal_code": "EC2700",
 				"country": "UK"
 			}
-		
+
 		},
 		"bank_route": {
-			"iban": "",
-			"bic": "",
-			"swift_code": "",
-			"account_number": "",
-			"sort_code": "",
+			"iban": "PB63910000004543",
+			"bic": "PBBE10080",
+			"swift_code": "PB10080",
+			"account_number": "90001050",
+			"sort_code": "10090",
 			"address": {
 				"street": "1 Pissouri Ave",
 				"city": "Paphos",
@@ -74,8 +121,8 @@ Example response:
 				"country": "Cyprus"
 			}
 		},
-		"created_at": "",
-		"updated_at": ""
+		"created_at": "2018-07-01T22:35:00Z",
+		"updated_at": "2018-07-01T22:35:00Z"
 	}
 }
 ```
@@ -110,11 +157,11 @@ In such cases, the transfer object will contain the FX conversion details, as an
 
 #### Example FX object:
 ```javascript
-	"fx": {
-		"amount": 24050,
-		"currency": "GBP",
-		"rate": 1030457
-	}
+"fx": {
+	"amount": 24050,
+	"currency": "GBP",
+	"rate": 1030457
+}
 ```
 	
 ### Beneficiary vs Originator:
@@ -125,55 +172,55 @@ Incoming bank transfers will include an originator object, while outgoing bank t
 
 #### Example Beneficiary object:
 ```javascript
-	"beneficiary":
-	{
-		"iban": "",
-		"bic": "",
-		"swift_code": "",
-		"account_number": "",
-		"sort_code": "",
-		"address": {
-			"street": "7 Tomb of the King Ave",
-			"city": "Paphos",
-			"state": "",
-			"postal_code": "5500",
-			"country": "Cyprus"
-		}
+"beneficiary":
+{
+	"iban": "GB16EEFL25293708963042",
+	"bic": "SPGL250091",
+	"swift_code": "",
+	"account_number": "90002037",
+	"sort_code": "100082",
+	"address": {
+		"street": "7 Tomb of the King Ave",
+		"city": "Paphos",
+		"state": "",
+		"postal_code": "5500",
+		"country": "Cyprus"
 	}
+}
 ```
 
 So a bank transfer record could look like the following.
 	
 #### Example Response:
 ```javascript
-    {
-        "status_code": "",
-        "status_text": "ok",
-        "data": [{
-            "id": 37,
-            "amount": -34560,
-            "currency": "EUR",
-            "status": "ACCEPTED",
-            "originator":
-            {
-                "iban": "",
-                "bic": "",
-                "swift_code": "",
-                "account_number": "",
-                "sort_code": "",
-                "address": {
-                    "street": "18 Kato Paphos Sqr",
-                    "city": "Paphos",
-                    "state": "",
-                    "postal_code": "5105",
-                    "country": "Cyprus"
-                }
-            },
-            "balance_after": 10670,
-            "reference": "",
-            "created_at": ""
-        }]
-    }
+{
+	"status_code": 2000,
+	"status_text": "ok",
+	"data": [{
+	    "id": 37,
+	    "amount": -34560,
+	    "currency": "EUR",
+	    "status": "ACCEPTED",
+	    "originator":
+	    {
+		"iban": "DE639583635384543",
+		"bic": "SPDE10080",
+		"swift_code": "",
+		"account_number": "",
+		"sort_code": "",
+		"address": {
+		    "street": "18 Kato Paphos Sqr",
+		    "city": "Paphos",
+		    "state": "",
+		    "postal_code": "5105",
+		    "country": "Cyprus"
+		}
+	    },
+	    "balance_after": 10670,
+	    "reference": "7fe529c4-59ec-4ba0-b5b1-6090034f328d",
+	    "created_at": "2018-07-01T22:35:00Z"
+	}]
+}
 ```
 
 ### IBAN vs SWIFT Code vs Sort Code
