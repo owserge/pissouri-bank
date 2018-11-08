@@ -21,6 +21,6 @@ This is about a group of people experimenting with technologies. If you came her
 * `samples`  sample configuration files, log files, etc
 * `build`    artifacts of the end-result
 
-### API docs
+### Server-Side
 
-* Server-side (API) documentation [here](./server/README.md)
+* API documentation [here](./server/README.md)
