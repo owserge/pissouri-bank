@@ -153,7 +153,8 @@ The API will always return transfers sorted by the date they were posted, in _de
 ### FX conversion:
 
 If a bank transfer was executed in a currency different than the account currency, then the an FX conversion should have taken place and the system should have recorded it.
-In such cases, the transfer object will contain the FX conversion details, as an fx object.
+
+In such cases, the transfer object will contain the FX conversion details, as an `fx` object.
 
 #### Example FX object:
 ```javascript
@@ -166,9 +167,9 @@ In such cases, the transfer object will contain the FX conversion details, as an
 	
 ### Beneficiary vs Originator:
 
-Incoming bank transfers have an originator, the party that sent the money over to this Pissouri Bank account.
-Outgoing bank transfers have are associated with a beneficiary, the party receiving the funds leaving the account.
-Incoming bank transfers will include an originator object, while outgoing bank transfers will include a beneficiary object. The objects are identical in structure.
+Incoming bank transfers have an _originator_, the party that sent the money over to this Pissouri Bank account. Outgoing bank transfers have are associated with a _beneficiary_, the party receiving the funds leaving the account.
+
+Incoming bank transfers will include an `originator` object, while outgoing bank transfers will include a `beneficiary` object. The objects are identical in structure.
 
 #### Example Beneficiary object:
 ```javascript
@@ -224,28 +225,27 @@ So a bank transfer record could look like the following.
 ```
 
 ### IBAN vs SWIFT Code vs Sort Code
-You may have noticed that the beneficiary and originator objects contain several fields attempting to describe account information.
-In general, you should expect the IBAN and BIC fields to always be populated, but there are some exceptions.
+You may have noticed that the beneficiary and originator objects contain several fields attempting to describe account information. In general, you should expect the _IBAN_ and _BIC_ fields to always be populated, but there are some exceptions.
 
-If money was transferred in GBP...
-	Field iban will be empty.
-	Field bic will be empty.
-	Field account_number will be populated with UK account number.
-	Field sort_code will be populated with UK sort code.
-	Field swift_code will be empty.
+If money was transferred in __GBP__
+* `iban` will be empty
+* `bic` will be empty
+* `account_number` will be populated with UK account number
+* `sort_code` will be populated with UK sort code
+* `swift_code` will be empty
 
-
-If money was transferred in AUD...
-	Field iban will be empty.
-	Field bic will be populated with the Australian BIC.
-	Field account_number will be empty.
-	Field sort_code will empty.
-	Field swift_code will be populated with an Australian SWIFT Code.
+If money was transferred in __AUD__
+* `iban` will be empty
+* `bic` will be populated with the Australian BIC
+* `account_number` will be empty
+* `sort_code` will empty
+* `swift_code` will be populated with an Australian SWIFT Code
 	
-Money transfers in any other currency...
-	Field iban will be populated with a valid IBAN.
-	Field bic will be populated with a valid BIC.
-	Field account_number will be empty.
-	Field sort_code will be empty.
-	Field swift_code will be empty.
-	
+Money transfers in any other currency
+* `iban` will be populated with a valid IBAN
+* `bic` will be populated with a valid BIC
+* `account_number` will be empty
+* `sort_code` will be empty
+* `swift_code` will be empty
+
+#### To be continued...
