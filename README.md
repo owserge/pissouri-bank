@@ -22,3 +22,5 @@ This is about a group of people experimenting with technologies. If you came her
 * `build`    artifacts of the end-result
 
 ### API docs
+
+* Server-side (API) documentation [here](./server/README.md)
