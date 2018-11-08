@@ -23,4 +23,4 @@ This is about a group of people experimenting with technologies. If you came her
 
 ### Server-Side
 
-* API documentation [here](./server/README.md)
+* API specification [here](./server/README.md)
