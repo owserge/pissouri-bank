@@ -1,5 +1,8 @@
 package com.pissouri.controller;
 
+import com.pissouri.dto.AccountDto;
+import com.pissouri.service.AccountService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -7,9 +10,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class AccountController {
 
-    @GetMapping(value = "/account", produces = MediaType.APPLICATION_JSON_VALUE)
-    public String getAccount() {
+    private AccountService accountService;
 
-        return "This is my account";
+    @Autowired
+    public AccountController(AccountService accountService) {
+
+        this.accountService = accountService;
+    }
+
+    @GetMapping(value = "/account", produces = MediaType.APPLICATION_JSON_VALUE)
+    public AccountDto getAccount() {
+
+        return accountService.getAccount();
     }
 }
