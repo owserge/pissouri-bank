@@ -16,7 +16,7 @@ public class ObjectMapperConfig {
 
         return new ObjectMapper()
                 .registerModule(new JavaTimeModule())
-                .setPropertyNamingStrategy(SNAKE_CASE)
+                .setPropertyNamingStrategy(SNAKE_CASE) // snake_case instead of camelCase
                 .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
     }
 }
