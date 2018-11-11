@@ -17,7 +17,7 @@ This is about a group of people experimenting with technologies. If you came her
 
 * `server`   contains whatever back-end solutions support the project  
 * `client`   contains the front-end code for the project
-* `resource` resources related to what and how we're build this
+* `resource` resources related to what and how we're building this
 * `samples`  sample configuration files, log files, etc
 * `build`    artifacts of the end-result
 

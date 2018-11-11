@@ -14,11 +14,13 @@ Currencies are always represented with their _alpha 3_ code (i.e. `EUR`, `GBP`, 
 
 ### Transfer Direction
 
-Bank transfers can be `INCOMING` (account received money) or `OUTGOING` (account sent money out).
+Bank transfers can be _INCOMING_ (account received money) or _OUTGOING_ (account sent money out).
 
 You can identify the transfer direction by looking at the transfer amount: 
-* If the amount is _negative_, the transfer is `OUTGOING`
-* If the amount is _positive_, then the transfer is `INCOMING`
+* If the amount is _negative_, the transfer is _OUTGOING_
+* If the amount is _positive_, then the transfer is _INCOMING_
+
+Outgoing transfers are represented as `OUT`, while incoming transfers are represented as `IN` transactions.
 
 ### Transfer Status
 
@@ -72,7 +74,7 @@ The response information is always encapsulated in a `data` field.
 }
 ```
 
-### Account Information Endpoint:
+### Account Information Endpoint
 
 ```shell
 HTTP GET /v1/account
@@ -127,7 +129,7 @@ Example response:
 }
 ```
 
-### Transfer List Endpoint:
+### Transfer List Endpoint
 
 ```shell
 HTTP GET /v1/account/transfers?type=[TYPE]&status=[STATUS]&page_size=[PAGE_SIZE]&page=[PAGE NUMBER]
@@ -136,8 +138,8 @@ Content-Type: application/json
 
 The endpoint returns a list of bank transfers for this account.
 
-#### Parameters:
-- `type`: Type of bank transfer, options are `IN`, and `OUT`
+#### Parameters
+- `type`: Type of bank transfer, options are `IN` (for _INCOMING_), and `OUT` (for _OUTGOING_)
 - `status`: Status of transfer, options are `PENDING`, `ACCEPTED`, `REJECTED`
 - `page_size`: The number of elements to retrieve per page
 - `page`: Page number
@@ -146,17 +148,17 @@ All parameters are optional.
 
 In case `page_size` is not provided, the API will return a _maximum of 10 records_.
 
-In case `page` is not provided, the API will return the _first page_ (first 10 records).
+In case `page` is not provided, the API will return the _first page_ (first X number of records).
 
 The API will always return transfers sorted by the date they were posted, in _descending_ order.
 
-### FX conversion:
+### FX conversion
 
-If a bank transfer was executed in a currency different than the account currency, then the an FX conversion should have taken place and the system should have recorded it.
+If a bank transfer was executed in a currency different than the account currency, then an FX conversion should have taken place and the system should have recorded it.
 
 In such cases, the transfer object will contain the FX conversion details, as an `fx` object.
 
-#### Example FX object:
+#### Example FX object
 ```javascript
 "fx": {
 	"amount": 24050,
@@ -165,13 +167,13 @@ In such cases, the transfer object will contain the FX conversion details, as an
 }
 ```
 	
-### Beneficiary vs Originator:
+### Beneficiary vs Originator
 
-Incoming bank transfers have an _originator_, the party that sent the money over to this Pissouri Bank account. Outgoing bank transfers have are associated with a _beneficiary_, the party receiving the funds leaving the account.
+Incoming bank transfers have an _originator_, the party that sent the money over to this Pissouri Bank account. Outgoing bank transfers are associated with a _beneficiary_, the party receiving the funds leaving the account.
 
 Incoming bank transfers will include an `originator` object, while outgoing bank transfers will include a `beneficiary` object. The objects are identical in structure.
 
-#### Example Beneficiary object:
+#### Example Beneficiary object
 ```javascript
 "beneficiary":
 {
@@ -192,7 +194,7 @@ Incoming bank transfers will include an `originator` object, while outgoing bank
 
 So a bank transfer record could look like the following.
 	
-#### Example Response:
+#### Example Response
 ```javascript
 {
 	"status_code": 2000,
@@ -238,7 +240,7 @@ If money was transferred in __AUD__
 * `iban` will be empty
 * `bic` will be populated with the Australian BIC
 * `account_number` will be empty
-* `sort_code` will empty
+* `sort_code` will be empty
 * `swift_code` will be populated with an Australian SWIFT Code
 	
 Money transfers in any other currency
