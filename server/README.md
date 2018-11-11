@@ -201,7 +201,7 @@ So a bank transfer record could look like the following.
 	"status_text": "ok",
 	"data": [{
 	    "id": 37,
-	    "amount": -34560,
+	    "amount": 34560,
 	    "currency": "EUR",
 	    "status": "ACCEPTED",
 	    "originator":
