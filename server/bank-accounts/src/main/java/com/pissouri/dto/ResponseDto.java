@@ -4,8 +4,19 @@ import java.util.Objects;
 
 public class ResponseDto<T> {
 
+    /**
+     * Response status code, as per {@link ResponseStatusCode}
+     */
     private int statusCode;
+
+    /**
+     * A more specific error message
+     */
     private String statusText;
+
+    /**
+     * Actual response information
+     */
     private T data;
 
     public int getStatusCode() {

@@ -10,7 +10,15 @@ Pissouri bank can only support transfers in the following currencies:
 
 There should be no accounts or bank transfers in any other currency recorded in the system.
 
-Currencies are always represented with their _alpha 3_ code (i.e. `EUR`, `GBP`, `USD`, `AUD`).
+Currencies are always represented with their _ISO 4217 Alpha 3_ code (i.e. `EUR`, `GBP`, `USD`, `AUD`).
+
+### Countries
+
+Pissouri bank issues bank accounts in Cyprus, and Cyprus only, but transfers to any other country are supported.
+
+You may assume the system supports all (ISO-registered) possible countries for bank transfers.
+
+Countries are always represented with their _ISO 3166 alpha 2_ code (i.e. `PL`, `UK`, `CY`, `AU`)
 
 ### Transfer Direction
 
@@ -120,7 +128,7 @@ Example response:
 				"city": "Paphos",
 				"state": "",
 				"postal_code": "5200",
-				"country": "Cyprus"
+				"country": "CY"
 			}
 		},
 		"created_at": "2018-07-01T22:35:00Z",
@@ -187,7 +195,7 @@ Incoming bank transfers will include an `originator` object, while outgoing bank
 		"city": "Paphos",
 		"state": "",
 		"postal_code": "5500",
-		"country": "Cyprus"
+		"country": "CY"
 	}
 }
 ```
@@ -201,7 +209,7 @@ So a bank transfer record could look like the following.
 	"status_text": "ok",
 	"data": [{
 	    "id": 37,
-	    "amount": -34560,
+	    "amount": 34560,
 	    "currency": "EUR",
 	    "status": "ACCEPTED",
 	    "originator":
@@ -216,7 +224,7 @@ So a bank transfer record could look like the following.
 		    "city": "Paphos",
 		    "state": "",
 		    "postal_code": "5105",
-		    "country": "Cyprus"
+		    "country": "CY"
 		}
 	    },
 	    "balance_after": 10670,

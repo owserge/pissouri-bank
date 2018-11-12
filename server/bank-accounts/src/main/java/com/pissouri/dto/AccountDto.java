@@ -5,14 +5,49 @@ import java.util.Objects;
 
 public class AccountDto {
 
+    /**
+     * Account unique identification number
+     */
     private long id;
+
+    /**
+     * Account statement number
+     */
     private String number;
+
+    /**
+     * Account balance, in minor units (i.e. cents)
+     */
     private long balance;
+
+    /**
+     * Account currency, in ISO 4217 Alpha 3 format (i.e. EUR)
+     */
     private String currency;
+
+    /**
+     * Identification code provided by the entity that created the account
+     */
     private String reference;
+
+    /**
+     * Account registration information
+     */
     private RegistrationDto registration;
+
+    /**
+     * Account banking information
+     */
     private BankRouteDto bankRoute;
+
+    /**
+     * The exact date and time for when this account was created
+     */
     private ZonedDateTime createdAt;
+
+    /**
+     * The date and time for when this account was last updated
+     */
     private ZonedDateTime updatedAt;
 
     public long getId() {
