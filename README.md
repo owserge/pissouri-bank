@@ -25,3 +25,7 @@ This is about a group of people experimenting with technologies. If you came her
 
 * Server-side (API) documentation [here](./server/README.md)
 * How to install and run the backend [here](./server/INSTALL.md) 
+
+### Front-end
+
+* UI Requirements [here](./resource/UI.md)
