@@ -1,12 +1,14 @@
-package com.pissouri.dto;
+package com.pissouri.data;
+
+import com.pissouri.dto.TransferStatusCode;
 
 import java.time.ZonedDateTime;
 import java.util.Objects;
 
-public class TransferDto {
+public class Transfer {
 
     /**
-     * Transfer unique record identification number
+     * Transfer database record id
      */
     private long id;
 
@@ -24,16 +26,6 @@ public class TransferDto {
      * Transfer status, one of {@link TransferStatusCode}
      */
     private String status;
-
-    /**
-     * Bank routing information for the transfer originator (if transfer is credit, incoming)
-     */
-    private BankRouteDto originator;
-
-    /**
-     * Bank routing information for the transfer beneficiary (if transfer is debit, outgoing)
-     */
-    private BankRouteDto beneficiary;
 
     /**
      * Account balance after the transfer has been processed
@@ -55,7 +47,7 @@ public class TransferDto {
         return id;
     }
 
-    public TransferDto setId(long id) {
+    public Transfer setId(long id) {
 
         this.id = id;
         return this;
@@ -66,7 +58,7 @@ public class TransferDto {
         return amount;
     }
 
-    public TransferDto setAmount(long amount) {
+    public Transfer setAmount(long amount) {
 
         this.amount = amount;
         return this;
@@ -77,7 +69,7 @@ public class TransferDto {
         return currency;
     }
 
-    public TransferDto setCurrency(String currency) {
+    public Transfer setCurrency(String currency) {
 
         this.currency = currency;
         return this;
@@ -88,31 +80,9 @@ public class TransferDto {
         return status;
     }
 
-    public TransferDto setStatus(String status) {
+    public Transfer setStatus(String status) {
 
         this.status = status;
-        return this;
-    }
-
-    public BankRouteDto getOriginator() {
-
-        return originator;
-    }
-
-    public TransferDto setOriginator(BankRouteDto originator) {
-
-        this.originator = originator;
-        return this;
-    }
-
-    public BankRouteDto getBeneficiary() {
-
-        return beneficiary;
-    }
-
-    public TransferDto setBeneficiary(BankRouteDto beneficiary) {
-
-        this.beneficiary = beneficiary;
         return this;
     }
 
@@ -121,7 +91,7 @@ public class TransferDto {
         return balanceAfter;
     }
 
-    public TransferDto setBalanceAfter(long balanceAfter) {
+    public Transfer setBalanceAfter(long balanceAfter) {
 
         this.balanceAfter = balanceAfter;
         return this;
@@ -132,7 +102,7 @@ public class TransferDto {
         return reference;
     }
 
-    public TransferDto setReference(String reference) {
+    public Transfer setReference(String reference) {
 
         this.reference = reference;
         return this;
@@ -143,20 +113,19 @@ public class TransferDto {
         return createdAt;
     }
 
-    public TransferDto setCreatedAt(ZonedDateTime createdAt) {
+    public Transfer setCreatedAt(ZonedDateTime createdAt) {
 
         this.createdAt = createdAt;
         return this;
     }
-
 
     @Override
     public boolean equals(Object o) {
 
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        TransferDto that = (TransferDto) o;
-        return id == that.id;
+        Transfer transfer = (Transfer) o;
+        return id == transfer.id;
     }
 
     @Override
@@ -168,13 +137,11 @@ public class TransferDto {
     @Override
     public String toString() {
 
-        return "TransferDto{" +
+        return "Transfer{" +
                 "id=" + id +
                 ", amount=" + amount +
                 ", currency='" + currency + '\'' +
                 ", status='" + status + '\'' +
-                ", originator=" + originator +
-                ", beneficiary=" + beneficiary +
                 ", balanceAfter=" + balanceAfter +
                 ", reference='" + reference + '\'' +
                 ", createdAt=" + createdAt +
