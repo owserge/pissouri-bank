@@ -50,6 +50,8 @@ public class MemoryTransferRepository implements TransferRepository {
     @Override
     public Optional<Transfer> getTransferById(Long id) {
 
+        if (id == null || id <= 0) return Optional.empty();
+        
         return TRANSFER_LIST
                 .stream()
                 .filter(transfer -> id.equals(transfer.getId()))
