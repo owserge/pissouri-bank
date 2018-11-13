@@ -37,7 +37,7 @@ public class ErrorAdvice {
     @ExceptionHandler(IllegalArgumentException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
-    public ResponseDto illegalArgumentException(HttpServletRequest request, IllegalArgumentException exception) {
+    public ResponseDto illegalArgument(HttpServletRequest request, IllegalArgumentException exception) {
 
         return new ResponseDto<>()
                 .setStatusCode(ResponseStatusCode.CLIENT_ERROR)
