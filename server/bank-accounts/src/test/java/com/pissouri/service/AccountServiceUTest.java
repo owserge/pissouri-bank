@@ -1,5 +1,6 @@
 package com.pissouri.service;
 
+import com.pissouri.data.StaticAccountRepository;
 import com.pissouri.dto.AccountDto;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +14,7 @@ public class AccountServiceUTest {
     @Before
     public void setup() {
 
-        accountService = new AccountService();
+        accountService = new AccountService(new StaticAccountRepository());
     }
 
     @Test
