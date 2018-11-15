@@ -38,6 +38,16 @@ public class Transfer {
     private String reference;
 
     /**
+     * Bank routing information for the transfer originator (if transfer is credit, incoming)
+     */
+    private BankRoute originator;
+
+    /**
+     * Bank routing information for the transfer beneficiary (if transfer is debit, outgoing)
+     */
+    private BankRoute beneficiary;
+
+    /**
      * The exact date and time for when this transfer was executed
      */
     private ZonedDateTime createdAt;
@@ -108,6 +118,28 @@ public class Transfer {
         return this;
     }
 
+    public BankRoute getOriginator() {
+
+        return originator;
+    }
+
+    public Transfer setOriginator(BankRoute originator) {
+
+        this.originator = originator;
+        return this;
+    }
+
+    public BankRoute getBeneficiary() {
+
+        return beneficiary;
+    }
+
+    public Transfer setBeneficiary(BankRoute beneficiary) {
+
+        this.beneficiary = beneficiary;
+        return this;
+    }
+
     public ZonedDateTime getCreatedAt() {
 
         return createdAt;
@@ -144,6 +176,8 @@ public class Transfer {
                 ", status='" + status + '\'' +
                 ", balanceAfter=" + balanceAfter +
                 ", reference='" + reference + '\'' +
+                ", originator=" + originator +
+                ", beneficiary=" + beneficiary +
                 ", createdAt=" + createdAt +
                 '}';
     }

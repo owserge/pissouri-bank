@@ -1,12 +1,10 @@
 package com.pissouri.controller;
 
 import com.pissouri.ApiTest;
-import io.restassured.RestAssured;
+import com.pissouri.RestApiTest;
 import io.restassured.http.ContentType;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static com.pissouri.dto.TransferStatusCode.*;
@@ -15,17 +13,7 @@ import static org.hamcrest.CoreMatchers.*;
 
 @ApiTest
 @RunWith(SpringRunner.class)
-public class TransferControllerApiTest {
-
-    @LocalServerPort
-    private int serverPort;
-
-    @Before
-    public void setup() {
-
-        RestAssured.port = serverPort;
-        RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
-    }
+public class TransferControllerApiTest extends RestApiTest {
 
     @Test
     public void getAccountTransferById_shouldReturnTransferDto_whenTransferFound() {
