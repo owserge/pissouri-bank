@@ -2,12 +2,11 @@ package com.pissouri.controller;
 
 import com.pissouri.dto.ResponseDto;
 import com.pissouri.dto.TransferDto;
+import com.pissouri.dto.TransferSearchDto;
 import com.pissouri.service.TransferService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,8 +28,8 @@ public class TransferController {
     }
 
     @GetMapping(value = "/account/transfers", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseDto<List<TransferDto>> getTransfers() {
+    public ResponseDto<List<TransferDto>> getTransfers(@ModelAttribute TransferSearchDto searchDto) {
 
-        return ResponseDto.ok(transferService.getTransfers());
+        return ResponseDto.ok(transferService.getTransfers()); //TODO search criteria
     }
 }
