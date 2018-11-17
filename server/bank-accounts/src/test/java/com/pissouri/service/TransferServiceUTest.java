@@ -1,7 +1,7 @@
 package com.pissouri.service;
 
 
-import com.pissouri.data.MemoryTransferRepository;
+import com.pissouri.data.RandomTransferRepository;
 import com.pissouri.dto.TransferDto;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,7 +19,7 @@ public class TransferServiceUTest {
     @Before
     public void setup() {
 
-        transferService = new TransferService(new MemoryTransferRepository());
+        transferService = new TransferService(new RandomTransferRepository(5));
     }
 
     @Test

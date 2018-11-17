@@ -9,14 +9,14 @@ import java.util.Optional;
 import static com.pissouri.dto.TransferStatusCode.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class MemoryTransferRepositoryUTest {
+public class RandomTransferRepositoryUTest {
 
     private TransferRepository transferRepository;
 
     @Before
     public void setup() {
 
-        transferRepository = new MemoryTransferRepository();
+        transferRepository = new RandomTransferRepository(5);
     }
 
     @Test
