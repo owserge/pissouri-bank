@@ -1,0 +1,580 @@
+{
+	"status_code": 2000,
+	"status_text": "ok",
+	"data": [{
+		"id": 1,
+		"amount": 3783,
+		"currency": "EUR",
+		"status": "ACCEPTED",
+		"originator": {
+			"iban": "PB91253500002108",
+			"bic": "PBBE2016",
+			"swift_code": "PB30863",
+			"account_number": "90009357",
+			"sort_code": "100357",
+			"address": {
+				"street": "1 King Ave",
+				"city": "Paphos",
+				"state": null,
+				"postal_code": "5200",
+				"country": "CY"
+			}
+		},
+		"beneficiary": null,
+		"balance_after": 906,
+		"reference": "76137518-04bc-45f0-a8cf-7df78a8ae165",
+		"created_at": "2018-11-17T09:06:03.071Z"
+	}, {
+		"id": 2,
+		"amount": -9478,
+		"currency": "AUD",
+		"status": "REJECTED",
+		"originator": null,
+		"beneficiary": {
+			"iban": "PB84921500007884",
+			"bic": "PBBE7470",
+			"swift_code": "PB92423",
+			"account_number": "90008032",
+			"sort_code": "100333",
+			"address": {
+				"street": "1 King Ave",
+				"city": "Paphos",
+				"state": null,
+				"postal_code": "5200",
+				"country": "CY"
+			}
+		},
+		"balance_after": 8560,
+		"reference": "c3e3900b-ea56-4ff8-8d01-874ed847f396",
+		"created_at": "2018-11-17T08:06:03.074Z"
+	}, {
+		"id": 3,
+		"amount": 739,
+		"currency": "EUR",
+		"status": "PENDING",
+		"originator": {
+			"iban": "PB90129200002416",
+			"bic": "PBBE6037",
+			"swift_code": "PB30929",
+			"account_number": "90008215",
+			"sort_code": "100491",
+			"address": {
+				"street": "1 King Ave",
+				"city": "Paphos",
+				"state": null,
+				"postal_code": "5200",
+				"country": "CY"
+			}
+		},
+		"beneficiary": null,
+		"balance_after": 8010,
+		"reference": "d6d621df-46a0-453f-b7ac-5a5f61d1dc96",
+		"created_at": "2018-11-17T07:06:03.075Z"
+	}, {
+		"id": 4,
+		"amount": -2053,
+		"currency": "AUD",
+		"status": "PENDING",
+		"originator": null,
+		"beneficiary": {
+			"iban": "PB49554800007007",
+			"bic": "PBBE4649",
+			"swift_code": "PB29659",
+			"account_number": "90004681",
+			"sort_code": "100547",
+			"address": {
+				"street": "1 King Ave",
+				"city": "Paphos",
+				"state": null,
+				"postal_code": "5200",
+				"country": "CY"
+			}
+		},
+		"balance_after": 8060,
+		"reference": "9e9a5aeb-b1b9-4134-b83c-c20d71b4cd4a",
+		"created_at": "2018-11-17T06:06:03.075Z"
+	}, {
+		"id": 5,
+		"amount": 198,
+		"currency": "EUR",
+		"status": "PENDING",
+		"originator": {
+			"iban": "PB56215200002978",
+			"bic": "PBBE6458",
+			"swift_code": "PB47703",
+			"account_number": "90004015",
+			"sort_code": "100169",
+			"address": {
+				"street": "1 King Ave",
+				"city": "Paphos",
+				"state": null,
+				"postal_code": "5200",
+				"country": "CY"
+			}
+		},
+		"beneficiary": null,
+		"balance_after": 4310,
+		"reference": "fabd9d43-7db0-4564-a0a3-b2d0e08423a7",
+		"created_at": "2018-11-17T05:06:03.075Z"
+	}, {
+		"id": 6,
+		"amount": -1615,
+		"currency": "GBP",
+		"status": "ACCEPTED",
+		"originator": null,
+		"beneficiary": {
+			"iban": "PB90757900008666",
+			"bic": "PBBE8815",
+			"swift_code": "PB27699",
+			"account_number": "90003739",
+			"sort_code": "100277",
+			"address": {
+				"street": "1 King Ave",
+				"city": "Paphos",
+				"state": null,
+				"postal_code": "5200",
+				"country": "CY"
+			}
+		},
+		"balance_after": 1381,
+		"reference": "04ea83d1-d2d7-45de-8a08-d580e554048f",
+		"created_at": "2018-11-17T04:06:03.075Z"
+	}, {
+		"id": 7,
+		"amount": -7913,
+		"currency": "EUR",
+		"status": "REJECTED",
+		"originator": null,
+		"beneficiary": {
+			"iban": "PB21964700009298",
+			"bic": "PBBE4759",
+			"swift_code": "PB54688",
+			"account_number": "90005957",
+			"sort_code": "100847",
+			"address": {
+				"street": "1 King Ave",
+				"city": "Paphos",
+				"state": null,
+				"postal_code": "5200",
+				"country": "CY"
+			}
+		},
+		"balance_after": 2061,
+		"reference": "24e27bd1-d609-4712-94bd-43ca311d782e",
+		"created_at": "2018-11-17T03:06:03.075Z"
+	}, {
+		"id": 8,
+		"amount": 4649,
+		"currency": "USD",
+		"status": "ACCEPTED",
+		"originator": {
+			"iban": "PB45360800001002",
+			"bic": "PBBE9309",
+			"swift_code": "PB10872",
+			"account_number": "90003775",
+			"sort_code": "100401",
+			"address": {
+				"street": "1 King Ave",
+				"city": "Paphos",
+				"state": null,
+				"postal_code": "5200",
+				"country": "CY"
+			}
+		},
+		"beneficiary": null,
+		"balance_after": 941,
+		"reference": "d1b52b64-e5df-4f75-bc2c-060a3040ea65",
+		"created_at": "2018-11-17T02:06:03.075Z"
+	}, {
+		"id": 9,
+		"amount": 2441,
+		"currency": "EUR",
+		"status": "ACCEPTED",
+		"originator": {
+			"iban": "PB78734700001711",
+			"bic": "PBBE9275",
+			"swift_code": "PB81256",
+			"account_number": "90003973",
+			"sort_code": "100110",
+			"address": {
+				"street": "1 King Ave",
+				"city": "Paphos",
+				"state": null,
+				"postal_code": "5200",
+				"country": "CY"
+			}
+		},
+		"beneficiary": null,
+		"balance_after": 751,
+		"reference": "cbd80bf0-b13e-4182-a85a-fc77fb0b2f0c",
+		"created_at": "2018-11-17T01:06:03.076Z"
+	}, {
+		"id": 10,
+		"amount": 3693,
+		"currency": "AUD",
+		"status": "ACCEPTED",
+		"originator": {
+			"iban": "PB63047300002146",
+			"bic": "PBBE2475",
+			"swift_code": "PB15299",
+			"account_number": "90002642",
+			"sort_code": "100636",
+			"address": {
+				"street": "1 King Ave",
+				"city": "Paphos",
+				"state": null,
+				"postal_code": "5200",
+				"country": "CY"
+			}
+		},
+		"beneficiary": null,
+		"balance_after": 5531,
+		"reference": "c24f1dc6-927a-4e39-ac21-125d4df6b973",
+		"created_at": "2018-11-17T00:06:03.076Z"
+	}, {
+		"id": 11,
+		"amount": 1272,
+		"currency": "EUR",
+		"status": "REJECTED",
+		"originator": {
+			"iban": "PB47626400002651",
+			"bic": "PBBE6418",
+			"swift_code": "PB71504",
+			"account_number": "90006647",
+			"sort_code": "100537",
+			"address": {
+				"street": "1 King Ave",
+				"city": "Paphos",
+				"state": null,
+				"postal_code": "5200",
+				"country": "CY"
+			}
+		},
+		"beneficiary": null,
+		"balance_after": 4498,
+		"reference": "8ec266e5-15c7-48cb-ab7a-92a220e056fb",
+		"created_at": "2018-11-16T23:06:03.076Z"
+	}, {
+		"id": 12,
+		"amount": -3094,
+		"currency": "EUR",
+		"status": "PENDING",
+		"originator": null,
+		"beneficiary": {
+			"iban": "PB76562500002249",
+			"bic": "PBBE7099",
+			"swift_code": "PB61372",
+			"account_number": "90006805",
+			"sort_code": "100142",
+			"address": {
+				"street": "1 King Ave",
+				"city": "Paphos",
+				"state": null,
+				"postal_code": "5200",
+				"country": "CY"
+			}
+		},
+		"balance_after": 7860,
+		"reference": "1bafb83e-7f84-439d-96bc-797fc8870ebd",
+		"created_at": "2018-11-16T22:06:03.076Z"
+	}, {
+		"id": 13,
+		"amount": 4209,
+		"currency": "EUR",
+		"status": "REJECTED",
+		"originator": {
+			"iban": "PB70526500004198",
+			"bic": "PBBE3396",
+			"swift_code": "PB40770",
+			"account_number": "90002622",
+			"sort_code": "100983",
+			"address": {
+				"street": "1 King Ave",
+				"city": "Paphos",
+				"state": null,
+				"postal_code": "5200",
+				"country": "CY"
+			}
+		},
+		"beneficiary": null,
+		"balance_after": 3709,
+		"reference": "2b5a4d46-b944-4b08-aaee-55abdaf4518e",
+		"created_at": "2018-11-16T21:06:03.076Z"
+	}, {
+		"id": 14,
+		"amount": -8970,
+		"currency": "GBP",
+		"status": "ACCEPTED",
+		"originator": null,
+		"beneficiary": {
+			"iban": "PB64283200003696",
+			"bic": "PBBE6077",
+			"swift_code": "PB90875",
+			"account_number": "90005973",
+			"sort_code": "100248",
+			"address": {
+				"street": "1 King Ave",
+				"city": "Paphos",
+				"state": null,
+				"postal_code": "5200",
+				"country": "CY"
+			}
+		},
+		"balance_after": 7881,
+		"reference": "d5b9700e-8fd9-4f4b-b502-5617f70ead3b",
+		"created_at": "2018-11-16T20:06:03.076Z"
+	}, {
+		"id": 15,
+		"amount": 8291,
+		"currency": "USD",
+		"status": "REJECTED",
+		"originator": {
+			"iban": "PB61526500007636",
+			"bic": "PBBE8672",
+			"swift_code": "PB14858",
+			"account_number": "90005708",
+			"sort_code": "100950",
+			"address": {
+				"street": "1 King Ave",
+				"city": "Paphos",
+				"state": null,
+				"postal_code": "5200",
+				"country": "CY"
+			}
+		},
+		"beneficiary": null,
+		"balance_after": 8909,
+		"reference": "6dcc1beb-fcd3-4047-82f1-3d0dc93b2177",
+		"created_at": "2018-11-16T19:06:03.077Z"
+	}, {
+		"id": 16,
+		"amount": 3523,
+		"currency": "EUR",
+		"status": "ACCEPTED",
+		"originator": {
+			"iban": "PB94729100004335",
+			"bic": "PBBE1207",
+			"swift_code": "PB40924",
+			"account_number": "90006220",
+			"sort_code": "100964",
+			"address": {
+				"street": "1 King Ave",
+				"city": "Paphos",
+				"state": null,
+				"postal_code": "5200",
+				"country": "CY"
+			}
+		},
+		"beneficiary": null,
+		"balance_after": 9705,
+		"reference": "a9e4e926-9f1b-4f73-9494-1a483278c9fd",
+		"created_at": "2018-11-16T18:06:03.077Z"
+	}, {
+		"id": 17,
+		"amount": 4964,
+		"currency": "GBP",
+		"status": "ACCEPTED",
+		"originator": {
+			"iban": "PB77416000002286",
+			"bic": "PBBE4293",
+			"swift_code": "PB78052",
+			"account_number": "90007363",
+			"sort_code": "100638",
+			"address": {
+				"street": "1 King Ave",
+				"city": "Paphos",
+				"state": null,
+				"postal_code": "5200",
+				"country": "CY"
+			}
+		},
+		"beneficiary": null,
+		"balance_after": 6577,
+		"reference": "0694c650-bf73-4159-b613-f6e023680c3e",
+		"created_at": "2018-11-16T17:06:03.077Z"
+	}, {
+		"id": 18,
+		"amount": -4796,
+		"currency": "USD",
+		"status": "PENDING",
+		"originator": null,
+		"beneficiary": {
+			"iban": "PB78270200004971",
+			"bic": "PBBE5689",
+			"swift_code": "PB26371",
+			"account_number": "90005106",
+			"sort_code": "100760",
+			"address": {
+				"street": "1 King Ave",
+				"city": "Paphos",
+				"state": null,
+				"postal_code": "5200",
+				"country": "CY"
+			}
+		},
+		"balance_after": 9811,
+		"reference": "f2976681-0589-4eb2-b4c7-ce79abab6c1f",
+		"created_at": "2018-11-16T16:06:03.077Z"
+	}, {
+		"id": 19,
+		"amount": 9248,
+		"currency": "AUD",
+		"status": "REJECTED",
+		"originator": {
+			"iban": "PB90596800004911",
+			"bic": "PBBE3948",
+			"swift_code": "PB69263",
+			"account_number": "90004364",
+			"sort_code": "100478",
+			"address": {
+				"street": "1 King Ave",
+				"city": "Paphos",
+				"state": null,
+				"postal_code": "5200",
+				"country": "CY"
+			}
+		},
+		"beneficiary": null,
+		"balance_after": 754,
+		"reference": "70869f10-f302-407d-930d-c8d4298a088e",
+		"created_at": "2018-11-16T15:06:03.077Z"
+	}, {
+		"id": 20,
+		"amount": -5421,
+		"currency": "AUD",
+		"status": "REJECTED",
+		"originator": null,
+		"beneficiary": {
+			"iban": "PB54848000005554",
+			"bic": "PBBE4256",
+			"swift_code": "PB82009",
+			"account_number": "90008868",
+			"sort_code": "100308",
+			"address": {
+				"street": "1 King Ave",
+				"city": "Paphos",
+				"state": null,
+				"postal_code": "5200",
+				"country": "CY"
+			}
+		},
+		"balance_after": 2182,
+		"reference": "70979135-e215-4941-9994-e161b9c91476",
+		"created_at": "2018-11-16T14:06:03.077Z"
+	}, {
+		"id": 21,
+		"amount": -4425,
+		"currency": "GBP",
+		"status": "REJECTED",
+		"originator": null,
+		"beneficiary": {
+			"iban": "PB33402700007237",
+			"bic": "PBBE3021",
+			"swift_code": "PB55288",
+			"account_number": "90008727",
+			"sort_code": "100843",
+			"address": {
+				"street": "1 King Ave",
+				"city": "Paphos",
+				"state": null,
+				"postal_code": "5200",
+				"country": "CY"
+			}
+		},
+		"balance_after": 9573,
+		"reference": "267fe762-4dca-4ba7-b3c7-d9128d4ac750",
+		"created_at": "2018-11-16T13:06:03.078Z"
+	}, {
+		"id": 22,
+		"amount": -3865,
+		"currency": "USD",
+		"status": "PENDING",
+		"originator": null,
+		"beneficiary": {
+			"iban": "PB42059600002284",
+			"bic": "PBBE4932",
+			"swift_code": "PB59752",
+			"account_number": "90002192",
+			"sort_code": "100148",
+			"address": {
+				"street": "1 King Ave",
+				"city": "Paphos",
+				"state": null,
+				"postal_code": "5200",
+				"country": "CY"
+			}
+		},
+		"balance_after": 8385,
+		"reference": "ad586397-b62f-4071-a908-4935bfa5d8f7",
+		"created_at": "2018-11-16T12:06:03.078Z"
+	}, {
+		"id": 23,
+		"amount": -4323,
+		"currency": "USD",
+		"status": "ACCEPTED",
+		"originator": null,
+		"beneficiary": {
+			"iban": "PB74706800002056",
+			"bic": "PBBE5293",
+			"swift_code": "PB79280",
+			"account_number": "90009830",
+			"sort_code": "100265",
+			"address": {
+				"street": "1 King Ave",
+				"city": "Paphos",
+				"state": null,
+				"postal_code": "5200",
+				"country": "CY"
+			}
+		},
+		"balance_after": 2204,
+		"reference": "68f2a77f-7aeb-4be9-898d-ca2642379d90",
+		"created_at": "2018-11-16T11:06:03.078Z"
+	}, {
+		"id": 24,
+		"amount": -5611,
+		"currency": "AUD",
+		"status": "REJECTED",
+		"originator": null,
+		"beneficiary": {
+			"iban": "PB74361100004457",
+			"bic": "PBBE6822",
+			"swift_code": "PB76258",
+			"account_number": "90005404",
+			"sort_code": "100787",
+			"address": {
+				"street": "1 King Ave",
+				"city": "Paphos",
+				"state": null,
+				"postal_code": "5200",
+				"country": "CY"
+			}
+		},
+		"balance_after": 1818,
+		"reference": "4c5d5a0d-4cbe-438f-b98c-eded8917bccb",
+		"created_at": "2018-11-16T10:06:03.078Z"
+	}, {
+		"id": 25,
+		"amount": -4250,
+		"currency": "GBP",
+		"status": "REJECTED",
+		"originator": null,
+		"beneficiary": {
+			"iban": "PB35294600004955",
+			"bic": "PBBE7675",
+			"swift_code": "PB78222",
+			"account_number": "90003017",
+			"sort_code": "100479",
+			"address": {
+				"street": "1 King Ave",
+				"city": "Paphos",
+				"state": null,
+				"postal_code": "5200",
+				"country": "CY"
+			}
+		},
+		"balance_after": 4971,
+		"reference": "ff1517f8-e6e5-48ef-9b42-0f612d097367",
+		"created_at": "2018-11-16T09:06:03.078Z"
+	}]
+}
