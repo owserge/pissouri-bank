@@ -24,3 +24,6 @@ hs_err_pid*
 
 # IDE folders and files.
 *.idea
+
+# Macintosh
+*.DS_Store
