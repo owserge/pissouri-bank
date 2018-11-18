@@ -1,5 +1,5 @@
-import Colors from './Colors';
-import FontStyle from './FontStyle';
+import Colors from '../constants/Colors';
+import FontStyle from '../constants/FontStyle';
 
 export default {
   avatarImageStyle: {  

@@ -1,119 +1,59 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
-import Colors from '../constants/Colors';
-import FontStyle from '../constants/FontStyle';
 import Currencies from '../constants/Currencies';
+import FontStyle from '../constants/FontStyle';
 import Layout from '../constants/Layout';
+import Colors from '../constants/Colors';
 
-import {normalizeBalance} from '../helpers/Convertors'
+import { normalizeBalance } from '../helpers/Convertors'
 
-export class AccountInfo extends React.Component {
+export default class AccountInfo extends React.Component {
 
-  constructor(props) {
-    super(props);
-    
-    this.state = {
-      data: {
-        registration: {
-          address: {}
-        },
-        bank_route: {
-          address: {}
-        },
-      }, 
-      isLoading: true, 
-      isError: false,
-      errorMessage: ''
-    };
-  }
-
-  componentDidMount() {
-    this.setState({isLoading: true});
-
-    fetch('http://localhost:8080/account')
-      .then(response => response.json())
-      .then(data => {
-        if (data.status_code == 2000) {
-          this.setState({data: data.data, isLoading: false, isError: false});
-        } else if (data.status_code == 4000) {
-          this.setState({isLoading: false, isError: true, errorMessage: data.status_text});
-        }
-      });
-
+  componentWillMount(){
+    this.setState({
+      firstName: this.props.firstName,
+      lastName: this.props.lastName,
+      number: this.props.number,
+      iban: this.props.iban,
+      bic: this.props.bic,
+      swiftCode: this.props.swiftCode,
+      sortCode: this.props.sortCode,
+      address: this.props.address,
+      balance: this.props.balance,
+      currency: this.props.currency,
+    });
   }
 
   render() {
-    const {data, isLoading, isError, errorMessage} = this.state;
-    
-    const userName =  <Text style={[styles.accountInfoViewTitle, styles.accountInfoLeftAligment]}>
-                        {data.registration.first_name && data.registration.first_name + ' '} 
-                        {data.registration.last_name && data.registration.last_name}
-                      </Text>;
-
-    const userNumber = data.number && <Text style={[styles.acountInfoText, styles.accountInfoLeftAligment]}>
-                                        {data.number}
-                                      </Text>;
-
-    const bankRouteIBAN = data.bank_route.iban && <Text style={styles.acountInfoText}>
-                                                    IBAN: {data.bank_route.iban}
-                                                  </Text>;
-
-    const bankRouteBIC = data.bank_route.bic &&  <Text style={styles.acountInfoText}>
-                                                  BIC: {data.bank_route.bic}
-                                                </Text>;
-
-    const bankRouteSWIFTCode = data.bank_route.swift_code &&  <Text style={styles.acountInfoText}>
-                                                            SWIFT Code: {data.bank_route.swift_code}
-                                                          </Text>;
-
-    const bankRouteSortCode = data.bank_route.sort_code &&  <Text style={styles.acountInfoText}>
-                                                          Sort Code: {data.bank_route.sort_code}
-                                                        </Text>;
-
-    const bankRouteAddress = data.bank_route.address && 
-              <Text style={styles.acountInfoText}>Address:{' '} +
-                {data.bank_route.address.postal_code && data.bank_route.address.postal_code + ' '}
-                {data.bank_route.address.state && data.bank_route.address.state + ' '}
-                {data.bank_route.address.city && data.bank_route.address.city + ' '}
-                {data.bank_route.address.street && data.bank_route.address.street} 
-              </Text>
-
-    const userBalance = <Text style={styles.acountInfoText}>
-                          Current Balance:{' '}
-                          {data.currency && Currencies[data.currency].symbol + ' '}
-                          {data.balance && normalizeBalance(data.balance)}
-                        </Text>
-
-    if (isLoading) {
-      return  <Text>
-                Loading...
-              </Text>;
-
-    } else if (isError) {
-      return  <Text>
-                {errorMessage}
-              </Text>;
-              
-    } else {
-      return  <View>
-                <View style={styles.accountInfoView}>
-                  <View style={styles.accountInfoLeftSide}>
-                    <Text style={[styles.accountInfoViewTitle, styles.accountInfoLeftAligment]}>{userName}</Text>
-                    <Text style={[styles.acountInfoText, styles.accountInfoLeftAligment]}>{userNumber}</Text>
-                  </View>
-                  <Text style={styles.accountInfoViewTitle}>Route information</Text>
-                  {bankRouteIBAN}
-                  {bankRouteBIC}
-                  {bankRouteSWIFTCode}
-                  {bankRouteSortCode}
-                  {bankRouteAddress} 
-                </View>  
-                {userBalance}
-              </View>
-    }
-  }  
+    return (
+      <View style={styles.line}>
+        <View style={styles.accountInfoView}>
+          <View style={styles.accountInfoLeftSide}>
+            <Text style={[styles.accountInfoViewTitle, styles.accountInfoLeftAligment]}>
+              {this.state.firstName} {this.state.lastName}
+            </Text>
+            <Text style={[styles.acountInfoText, styles.accountInfoLeftAligment]}>{this.state.number}</Text>
+          </View>
+            <Text style={styles.accountInfoViewTitle}>Route information</Text>
+            <Text style={styles.acountInfoText}>IBAN: {this.state.iban}</Text>
+            <Text style={styles.acountInfoText}>BIC: {this.state.bic}</Text>
+            <Text style={styles.acountInfoText}>SWIFT Code: {this.state.swiftCode}</Text>
+            <Text style={styles.acountInfoText}>Sort Code: {this.state.sortCode}</Text>
+            <Text style={styles.acountInfoText}>Address: {this.state.address}</Text>
+          </View>
+        <View style={styles.accountInfoBalance}>
+          <Text style={styles.accountInfoBalanceTitle}>Current Balance: </Text>
+          <Text style={styles.accountInfoBalanceAmount}>
+            {Currencies[this.state.currency].symbol}{' '}
+            {normalizeBalance(this.state.balance)}
+          </Text>
+        </View>
+      </View>
+    );
+  }
 }
+
 
 const styles = StyleSheet.create({
   accountInfoView: {
@@ -144,5 +84,29 @@ const styles = StyleSheet.create({
     fontSize: FontStyle.defaultTitleSize,
     textAlign: 'right',
     color: Colors.textLigthColor
+  },
+  accountInfoBalance: {
+    fontFamily: FontStyle.boldFontFamily,
+    height: 72
+  },
+  accountInfoBalanceTitle: {
+    fontFamily: FontStyle.regularFontFamily,
+    fontSize: FontStyle.defaultTitleSize,
+    color: Colors.textGrayColor,
+    position: 'absolute',
+    top: 24,
+    left: Layout.paddingStep * 3,
+  },
+  accountInfoBalanceAmount: {
+    fontFamily: FontStyle.regularFontFamily,
+    fontSize: FontStyle.defaultXXLSize,
+    color: Colors.textBlackColor,
+    position: 'absolute',
+    top: 22,
+    right: Layout.paddingStep * 3,
+  },
+  line: {
+    borderBottomColor: Colors.lineColor,
+    borderBottomWidth: 1,
   }
 });
