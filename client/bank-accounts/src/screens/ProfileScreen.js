@@ -23,7 +23,6 @@ export default class ProfileScreen extends React.Component {
  
   componentWillMount() {
     getAccount().then((res) => {
-      console.log(res);
       this.setState({
         registration: res.data.registration,
         isLoading: false
@@ -40,12 +39,13 @@ export default class ProfileScreen extends React.Component {
     if (this.state.isLoading) {
       return ( <Preloader /> );
     } else {
+      const registration = this.state.registration;
       return (
         <View style={styles.view}>
           <Image style={styles.avatar} source={require('../assets/images/avatar.jpg')} />
-          <Text style={styles.accountNameText}>{this.state.registration.first_name} {this.state.registration.last_name}</Text>
+          <Text style={styles.accountNameText}>{registration.first_name} {registration.last_name}</Text>
           <Text style={styles.accountDOBText}>Date of birth</Text>
-          <Text style={styles.accountDOBText}>{this.state.registration.dob}</Text>
+          <Text style={styles.accountDOBText}>{registration.dob}</Text>
         </View>
       );
     }

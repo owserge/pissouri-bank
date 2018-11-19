@@ -1,7 +1,7 @@
 import React from 'react';
-import { Image, Text, ScrollView, StyleSheet, View, TouchableOpacity, TouchableHighlight } from 'react-native';
+import { Image, ScrollView, StyleSheet, View, TouchableOpacity } from 'react-native';
 
-import { getAccount } from '../gateway/Api';
+import { getAccount, getTransfers } from '../gateway/Api';
 
 import Transfers from '../components/Transfers';
 import AccountInfo from '../components/AccountInfo';
@@ -17,17 +17,25 @@ export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoading: true
+      isAccountDataLoading: true,
+      isTransfersDataLoading: true
     }
   }
   
   componentWillMount() {
     getAccount().then((res) => {
       this.setState({
-        data: res.data,
-        isLoading: false
+        accountData: res.data,
+        isAccountDataLoading: false
       })
     })
+    getTransfers().then((res) => {
+      this.setState({
+        transfersData: res.data,
+        isTransfersDataLoading: false
+      })
+    })
+    
   }
  
   static navigationOptions = ({ navigation }) => ({
@@ -42,28 +50,30 @@ export default class HomeScreen extends React.Component {
       </TouchableOpacity>
     ),
   }); 
-  
+
   render() {
 
-    if (this.state.isLoading) {
+    if (this.state.isAccountDataLoading || this.state.isTransfersDataLoading) {
       return ( <Preloader /> );
     } else {
+      const accountData = this.state.accountData;
+      const transfersData = this.state.transfersData;
       return (
         <View style={styles.container}>
           <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
             <AccountInfo 
-              firstName={this.state.data.registration.first_name}
-              lastName={this.state.data.registration.last_name}
-              number={this.state.data.number}
-              iban={this.state.data.bank_route.iban}
-              bic={this.state.data.bank_route.bic}
-              swiftCode={this.state.data.bank_route.swift_code}
-              sortCode={this.state.data.bank_route.sort_code}
-              address={addressObjectToString(this.state.data.registration.address)}
-              balance={this.state.data.balance}
-              currency={this.state.data.currency}
+              firstName={accountData.registration.first_name}
+              lastName={accountData.registration.last_name}
+              number={accountData.number}
+              iban={accountData.bank_route.iban}
+              bic={accountData.bank_route.bic}
+              swiftCode={accountData.bank_route.swift_code}
+              sortCode={accountData.bank_route.sort_code}
+              address={addressObjectToString(accountData.registration.address)}
+              balance={accountData.balance}
+              currency={accountData.currency}
             />
-            <Transfers />
+            <Transfers transfers={transfersData}/>
           </ScrollView>
         </View>
       );

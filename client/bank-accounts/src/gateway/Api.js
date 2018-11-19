@@ -6,3 +6,7 @@ export function getTransfers() {
     const url = `http://localhost:8080/account/transfers`;
     return fetch(url).then((res) => res.json())
 }
+export function getTransferById(id) {
+    const url = `http://localhost:8080/account/transfers/${id}`;
+    return fetch(url).then((res) => res.json())
+}

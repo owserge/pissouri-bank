@@ -8,100 +8,36 @@ import Colors from '../constants/Colors';
 import FontStyle from '../constants/FontStyle';
 import Layout from '../constants/Layout';
 
-
 class Transfers extends React.Component {
   
   componentWillMount(){
     this.setState({
-      
+      transfers: this.props.transfers,
     });
   }
 
   render() {
+
+    const transferItems = this.state.transfers.map((item) => 
+      <TouchableHighlight 
+        key={item.id}
+        underlayColor={Colors.backgroundGrayColor}
+        onPress={() => { this.props.navigation.navigate('Details', {transferId: item.id}) }}>
+        <TransferItem
+          key={item.id}
+          title={item.amount < 0 ? item.beneficiary.account_number : item.originator.account_number }
+          status={item.status}
+          amount={item.amount}
+          currency={item.currency}
+        />
+      </TouchableHighlight>
+    );
+
     return  (
       <View>
         <Text style={styles.lastTransactionText}>Last transactions</Text>
         <View style={styles.line}></View>
-        <TouchableHighlight 
-          underlayColor={Colors.backgroundGrayColor}
-          onPress={() => { this.props.navigation.navigate('Details') }}>
-          <TransferItem
-            title="Apple New York 45st"
-            status="Pending"
-            amount="100500"
-            currency="EUR"
-          />
-        </TouchableHighlight>
-        <TouchableHighlight 
-          underlayColor={Colors.backgroundGrayColor}
-          onPress={() => { this.props.navigation.navigate('Details') }}>
-          <TransferItem
-            title="Souvlaki Paphos"
-            status="Pending"
-            amount="-100"
-            currency="EUR"
-          />
-        </TouchableHighlight>
-        <TouchableHighlight 
-          underlayColor={Colors.backgroundGrayColor}
-          onPress={() => { this.props.navigation.navigate('Details') }}>
-          <TransferItem
-            title="F Jeans"
-            status="Pending"
-            amount="-83.22"
-            currency="EUR"
-          />
-        </TouchableHighlight>
-        <TouchableHighlight 
-          underlayColor={Colors.backgroundGrayColor}
-          onPress={() => { this.props.navigation.navigate('Details') }}>
-          <TransferItem
-            title="T-Mobile"
-            status="Rejected"
-            amount="20.32"
-            currency="USD"
-          />
-        </TouchableHighlight>
-        <TouchableHighlight 
-          underlayColor={Colors.backgroundGrayColor}
-          onPress={() => { this.props.navigation.navigate('Details') }}>
-          <TransferItem
-            title="Apple New York 45st"
-            status="Pending"
-            amount="100500"
-            currency="EUR"
-          />
-        </TouchableHighlight>
-        <TouchableHighlight 
-          underlayColor={Colors.backgroundGrayColor}
-          onPress={() => { this.props.navigation.navigate('Details') }}>
-          <TransferItem
-            title="Souvlaki Paphos"
-            status="Pending"
-            amount="-100"
-            currency="EUR"
-          />
-        </TouchableHighlight>
-        <TouchableHighlight 
-          underlayColor={Colors.backgroundGrayColor}
-          onPress={() => { this.props.navigation.navigate('Details') }}>
-          <TransferItem
-            title="F Jeans"
-            status="Pending"
-            amount="-83.22"
-            currency="EUR"
-          />
-        </TouchableHighlight>
-        <TouchableHighlight 
-          underlayColor={Colors.backgroundGrayColor}
-          onPress={() => { this.props.navigation.navigate('Details') }}>
-          <TransferItem
-            title="T-Mobile"
-            status="Rejected"
-            amount="20.32"
-            currency="USD"
-          />
-        </TouchableHighlight>
+        {transferItems}
       </View>
     );
   }

@@ -9,11 +9,11 @@ export default class AccountInfo extends React.Component {
 
   componentWillMount(){
     this.setState({
-      iban: "200039399183832",
-      bic: "PK929",
-      swiftCode: "98928392839288191833",
-      sortCode: "292",
-      address: "Pall mall street 29, NJ"
+      iban: this.props.iban,
+      bic: this.props.bic,
+      swiftCode: this.props.swiftCode,
+      sortCode: this.props.sortCode,
+      address: this.props.address
     });
   }
 
