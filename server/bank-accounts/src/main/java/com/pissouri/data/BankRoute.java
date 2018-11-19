@@ -19,6 +19,11 @@ public class BankRoute {
     private long accountId;
 
     /**
+     * Beneficiary (or originator) full name
+     */
+    private String fullName;
+
+    /**
      * International bank account number
      */
     private String iban;
@@ -97,6 +102,17 @@ public class BankRoute {
     public BankRoute setAccountId(long accountId) {
 
         this.accountId = accountId;
+        return this;
+    }
+
+    public String getFullName() {
+
+        return fullName;
+    }
+
+    public BankRoute setFullName(String fullName) {
+
+        this.fullName = fullName;
         return this;
     }
 
@@ -253,6 +269,7 @@ public class BankRoute {
         return "BankRoute{" +
                 "id=" + id +
                 ", accountId=" + accountId +
+                ", fullName='" + fullName + '\'' +
                 ", iban='" + iban + '\'' +
                 ", bic='" + bic + '\'' +
                 ", swiftCode='" + swiftCode + '\'' +

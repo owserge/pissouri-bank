@@ -39,6 +39,7 @@ public class AccountControllerApiTest extends RestApiTest {
                 .body("data.registration.address.city", equalTo("London"))
                 .body("data.registration.address.postal_code", equalTo("EC2700"))
                 .body("data.registration.address.country", equalTo("UK"))
+                .body("data.bank_route.full_name", equalTo("Cash, John"))
                 .body("data.bank_route.iban", equalTo("PB63910000004543"))
                 .body("data.bank_route.bic", equalTo("PBBE10080"))
                 .body("data.bank_route.swift_code", equalTo("PB10080"))

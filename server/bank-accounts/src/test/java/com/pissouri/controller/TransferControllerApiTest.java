@@ -54,6 +54,7 @@ public class TransferControllerApiTest extends RestApiTest {
                 .body("data.reference", equalTo("e2b70dba-e6b3-11e8-9f32-f2801f1b9fd1"))
                 .body("data.created_at", equalTo("2018-07-01T00:00:00Z"))
                 .body("data.originator", notNullValue())
+                .body("data.originator.full_name", equalTo("Alcohol co. Ltd"))
                 .body("data.originator.bic", equalTo("PBBE10080"))
                 .body("data.originator.iban", equalTo("PB63910000004543"))
                 .body("data.originator.swift_code", equalTo("PB10080"))
@@ -124,6 +125,7 @@ public class TransferControllerApiTest extends RestApiTest {
                 .body("data[0].created_at", equalTo("2018-07-01T00:00:00Z"))
                 .body("data[0].beneficiary", nullValue())
                 .body("data[0].originator", notNullValue())
+                .body("data[0].originator.full_name", equalTo("Burgers Paphos"))
                 .body("data[0].originator.bic", equalTo("PBBE10080"))
                 .body("data[0].originator.iban", equalTo("PB63910000004543"))
                 .body("data[0].originator.swift_code", equalTo("PB10080"))
@@ -144,6 +146,7 @@ public class TransferControllerApiTest extends RestApiTest {
                 .body("data[1].created_at", equalTo("2018-07-02T00:00:00Z"))
                 .body("data[1].originator", nullValue())
                 .body("data[1].beneficiary", notNullValue())
+                .body("data[1].beneficiary.full_name", equalTo("Burgers Nicosia"))
                 .body("data[1].beneficiary.bic", equalTo("NVBE10234"))
                 .body("data[1].beneficiary.iban", equalTo("NV63910000005871"))
                 .body("data[1].beneficiary.swift_code", equalTo("NV10918"))
@@ -168,16 +171,17 @@ public class TransferControllerApiTest extends RestApiTest {
                         .setReference("e2b70dba-e6b3-11e8-9f32-f2801f1b9fd1")
                         .setCreatedAt(ZonedDateTime.of(2018, 7, 1, 0, 0, 0, 0, UTC))
                         .setOriginator(new BankRoute()
-                            .setId(transferId)
-                            .setBic("PBBE10080")
-                            .setIban("PB63910000004543")
-                            .setSwiftCode("PB10080")
-                            .setAccountNumber("90001050")
-                            .setSortCode("10090")
-                            .setStreet("1 Pissouri Ave")
-                            .setCity("Paphos")
-                            .setPostalCode("5200")
-                            .setCountry("CY"))));
+                                .setId(transferId)
+                                .setFullName("Alcohol co. Ltd")
+                                .setBic("PBBE10080")
+                                .setIban("PB63910000004543")
+                                .setSwiftCode("PB10080")
+                                .setAccountNumber("90001050")
+                                .setSortCode("10090")
+                                .setStreet("1 Pissouri Ave")
+                                .setCity("Paphos")
+                                .setPostalCode("5200")
+                                .setCountry("CY"))));
     }
 
     private void givenTransfersExist() {
@@ -193,6 +197,7 @@ public class TransferControllerApiTest extends RestApiTest {
                         .setCreatedAt(ZonedDateTime.of(2018, 7, 1, 0, 0, 0, 0, UTC))
                         .setOriginator(new BankRoute()
                                 .setId(1L)
+                                .setFullName("Burgers Paphos")
                                 .setBic("PBBE10080")
                                 .setIban("PB63910000004543")
                                 .setSwiftCode("PB10080")
@@ -213,6 +218,7 @@ public class TransferControllerApiTest extends RestApiTest {
                         .setCreatedAt(ZonedDateTime.of(2018, 7, 2, 0, 0, 0, 0, UTC))
                         .setBeneficiary(new BankRoute()
                                 .setId(2L)
+                                .setFullName("Burgers Nicosia")
                                 .setBic("NVBE10234")
                                 .setIban("NV63910000005871")
                                 .setSwiftCode("NV10918")
@@ -222,6 +228,6 @@ public class TransferControllerApiTest extends RestApiTest {
                                 .setCity("London")
                                 .setPostalCode("E7500")
                                 .setCountry("UK"))
-              ));
+        ));
     }
 }

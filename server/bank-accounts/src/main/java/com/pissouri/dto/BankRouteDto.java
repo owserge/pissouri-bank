@@ -5,6 +5,11 @@ import java.util.Objects;
 public class BankRouteDto {
 
     /**
+     * Beneficiary (or originator) full name
+     */
+    private String fullName;
+
+    /**
      * International bank account number
      */
     private String iban;
@@ -33,6 +38,17 @@ public class BankRouteDto {
      * Address associated with bank account information
      */
     private AddressDto address;
+
+    public String getFullName() {
+
+        return fullName;
+    }
+
+    public BankRouteDto setFullName(String fullName) {
+
+        this.fullName = fullName;
+        return this;
+    }
 
     public String getIban() {
 
@@ -123,7 +139,8 @@ public class BankRouteDto {
     public String toString() {
 
         return "BankRouteDto{" +
-                "iban='" + iban + '\'' +
+                "fullName='" + fullName + '\'' +
+                ", iban='" + iban + '\'' +
                 ", bic='" + bic + '\'' +
                 ", swiftCode='" + swiftCode + '\'' +
                 ", accountNumber='" + accountNumber + '\'' +

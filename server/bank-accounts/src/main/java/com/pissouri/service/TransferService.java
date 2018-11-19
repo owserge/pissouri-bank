@@ -61,6 +61,7 @@ public class TransferService {
         if (bankRoute == null) return null;
 
         return new BankRouteDto()
+                .setFullName(bankRoute.getFullName())
                 .setBic(bankRoute.getBic())
                 .setIban(bankRoute.getIban())
                 .setSwiftCode(bankRoute.getSwiftCode())

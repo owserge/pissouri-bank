@@ -21,6 +21,7 @@ public final class BankRoutes {
         return new BankRoute()
                 .setId(randomId)
                 .setBic(randomBic())
+                .setFullName("McDonalds Paphos")
                 .setIban(randomIban())
                 .setSwiftCode(randomSwiftCode())
                 .setAccountNumber(randomAccountNumber())

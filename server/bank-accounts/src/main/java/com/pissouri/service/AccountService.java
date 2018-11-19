@@ -48,6 +48,7 @@ public class AccountService {
 
         BankRoute bankRoute = account.getBankRoute();
         BankRouteDto bankRouteDto = new BankRouteDto()
+                .setFullName(String.format("%s, %s", registration.getLastName(), registration.getFirstName()))
                 .setIban(bankRoute.getIban())
                 .setBic(bankRoute.getBic())
                 .setSwiftCode(bankRoute.getSwiftCode())
