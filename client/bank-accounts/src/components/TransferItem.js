@@ -1,12 +1,10 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
-import { normalizeBalance } from '../helpers/Convertors'
+import { prettifyBalance } from '../helpers/Convertors'
 
-import Currencies from '../constants/Currencies'
 import Colors from '../constants/Colors';
 import FontStyle from '../constants/FontStyle';
-
 import Layout from '../constants/Layout';
 
 export default class TransferItem extends React.Component {
@@ -24,11 +22,9 @@ export default class TransferItem extends React.Component {
     return  (
       <View style={[styles.transferItem, styles.line]}>
         <Text style={styles.title}>{this.state.title}</Text>
-        <Text style={styles.status}>{this.state.status}</Text>
-        <Text style={styles.amount}>
-          -{' '}
-          {Currencies[this.state.currency].symbol}{' '}
-          {normalizeBalance(this.state.amount)}
+        <Text style={styles.status}>{this.state.status.toLowerCase()}</Text>
+        <Text style={(this.state.amount > 0 ? [styles.amount, styles.amountGreen] : styles.amount)}>
+          {prettifyBalance(this.state.amount, this.state.currency)}
         </Text>
       </View>
     );
@@ -63,6 +59,9 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 27,
     right: Layout.paddingStep * 3,
+  },
+  amountGreen: {
+    color: "#009900",
   },
   line: {
     borderBottomColor: Colors.lineColor,
