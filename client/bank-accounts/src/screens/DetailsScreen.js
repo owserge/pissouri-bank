@@ -53,7 +53,7 @@ export default class ProfileScreen extends React.Component {
         <View style={styles.container}>
           <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
             <TransferItem
-              title={remoteDetails.account_number}
+              title={remoteDetails.full_name}
               status={data.status}
               amount={data.amount}
               currency={data.currency}

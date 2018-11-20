@@ -25,7 +25,7 @@ class Transfers extends React.Component {
         onPress={() => { this.props.navigation.navigate('Details', {transferId: item.id}) }}>
         <TransferItem
           key={item.id}
-          title={item.amount < 0 ? item.beneficiary.account_number : item.originator.account_number }
+          title={item.amount < 0 ? item.beneficiary.full_name : item.originator.full_name }
           status={item.status}
           amount={item.amount}
           currency={item.currency}

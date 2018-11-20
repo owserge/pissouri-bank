@@ -6,9 +6,9 @@ export default {
     symbol: '£'
   },
   USD: {
-    symbol: 'USD'
+    symbol: '$'
   },
   AUD: {
-    symbol: 'AUD'
+    symbol: 'A$'
   }
 };
