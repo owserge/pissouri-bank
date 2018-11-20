@@ -4,6 +4,7 @@ import { Image, Text, StyleSheet, View } from 'react-native';
 import { getAccount } from '../gateway/Api'
 
 import Preloader from '../components/Preloader'
+import ApiError from '../components/ApiError'
 
 import Colors from '../constants/Colors';
 import FontStyle from '../constants/FontStyle';
@@ -17,17 +18,32 @@ export default class ProfileScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoading: true
+      isAccountDataLoading: true
     }
   }
- 
-  componentWillMount() {
+
+  _apiRequest = () => {
+    this.setState({
+      isAccountDataLoading: true,
+      isError: false
+    })
+
     getAccount().then((res) => {
+      console.log(res);
       this.setState({
         registration: res.data.registration,
-        isLoading: false
+        isAccountDataLoading: false
+      })
+    }, (errorMessage) => {
+      this.setState({
+        isError: true,
+        lastErrorMessage: errorMessage
       })
     })
+  }
+
+  componentWillMount() {
+    this._apiRequest()
   }
 
   static navigationOptions = {
@@ -36,8 +52,16 @@ export default class ProfileScreen extends React.Component {
   };  
 
   render() {
-    if (this.state.isLoading) {
-      return ( <Preloader /> );
+    if (this.state.isError == true) {
+      return ( 
+      <ApiError 
+        errorMessage={this.state.lastErrorMessage} 
+        reFetchHandler={this._apiRequest}
+      /> );
+
+    } else if (this.state.isAccountDataLoading) {
+      return ( <Preloader /> ); 
+      
     } else {
       const registration = this.state.registration;
       return (

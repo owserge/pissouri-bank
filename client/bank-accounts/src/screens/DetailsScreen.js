@@ -5,6 +5,7 @@ import { getTransferById } from '../gateway/Api';
 
 import { addressObjectToString } from '../helpers/Convertors';
 
+import ApiError from '../components/ApiError'
 import TransferItem from '../components/TransferItem'
 import HeaderStyle from '../constants/HeaderStyle';
 import ContainerStyle from '../constants/ContainerStyle';
@@ -17,17 +18,32 @@ export default class ProfileScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoading: true
+      isTransfersDataLoading: true,
+      isError: false
     }
   }
- 
-  componentWillMount() {
+
+  _apiRequest = () => {
+    this.setState({
+      isTransfersDataLoading: true,
+      isError: false
+    })
+    
     getTransferById(this.props.navigation.state.params.transferId).then((res) => {
       this.setState({
         data: res.data,
-        isLoading: false
+        isTransfersDataLoading: false
+      })
+    }, (errorMessage) => {
+      this.setState({
+        isError: true,
+        lastErrorMessage: errorMessage
       })
     })
+  }
+
+  componentWillMount() {
+    this._apiRequest();
   }
 
   static navigationOptions = ({ navigation }) => ({
@@ -44,8 +60,17 @@ export default class ProfileScreen extends React.Component {
   });  
 
   render() {
-    if (this.state.isLoading) {
-      return ( <Preloader /> );
+    if (this.state.isError) {
+      return ( 
+        <ApiError 
+          errorMessage={this.state.lastErrorMessage} 
+          reFetchHandler={this._apiRequest}
+        /> 
+      );
+
+    } else if (this.state.isTransfersDataLoading) {
+      return ( <Preloader /> ); 
+      
     } else {
       const data = this.state.data;
       const remoteDetails = (data.amount < 0 ? data.beneficiary : data.originator )

@@ -1,28 +1,30 @@
-import RuntimeConfig from '../constants/RuntimeConfig'
+import RuntimeConfig from '../constants/RuntimeConfig';
+
+import { NETWORK_ERROR_MESSAGE } from '../constants/Messages'
 
 export function getAccount() {
-    const url = `${RuntimeConfig.apiHost}/account`;
-    return fetch(url)
-        .then((res) => res.json())
-        .catch((error) =>{
-            alert(error);
-        });
+    return new Promise((resolve, reject) => {
+        const url = `${RuntimeConfig.apiHost}/account`;
+        fetch(url).then((res) => {
+            res.json().then((res) => (res.status_code == 2000 ? resolve(res) : reject(res.status_text) ))        
+        }).catch(() => reject(NETWORK_ERROR_MESSAGE))
+    })
 }
 
 export function getTransfers() {
-    const url = `${RuntimeConfig.apiHost}/account/transfers`;
-    return fetch(url)
-        .then((res) => res.json())
-        .catch((error) =>{
-            alert(error);
-        });
+    return new Promise((resolve, reject) => {
+        const url = `${RuntimeConfig.apiHost}/account/transfers`;
+        fetch(url).then((res) => {
+            res.json().then((res) => (res.status_code == 2000 ? resolve(res) : reject(res.status_text) ))        
+        }).catch(() => reject(NETWORK_ERROR_MESSAGE))
+    })
 }
 
 export function getTransferById(id) {
-    const url = `${RuntimeConfig.apiHost}/account/transfers/${id}`;
-    return fetch(url)
-        .then((res) => res.json())
-        .catch((error) =>{
-            alert(error);
-        });
+    return new Promise((resolve, reject) => {
+        const url = `${RuntimeConfig.apiHost}/account/transfers/${id}`;
+        fetch(url).then((res) => {
+            res.json().then((res) => (res.status_code == 2000 ? resolve(res) : reject(res.status_text) ))        
+        }).catch(() => reject(NETWORK_ERROR_MESSAGE))
+    })
 }
