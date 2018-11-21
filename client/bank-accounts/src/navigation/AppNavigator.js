@@ -4,6 +4,9 @@ import HomeScreen from '../screens/HomeScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import DetailsScreen from '../screens/DetailsScreen';
 
+/**
+ * Navigation heart of the application.
+ */
 export default createStackNavigator({
   Home: {screen: HomeScreen},
   Profile: {screen: ProfileScreen},

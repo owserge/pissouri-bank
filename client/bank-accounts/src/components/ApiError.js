@@ -4,6 +4,10 @@ import { Text, View, StyleSheet, Button, Image } from 'react-native';
 import Colors from '../constants/Colors';
 import FontStyle from '../constants/FontStyle';
 
+/**
+ * Renders an error screen with button "Try again" and error message,
+ * as soon as any error occurs.
+ */
 export default class ApiError extends React.Component {
  
   componentWillMount(){
@@ -15,8 +19,8 @@ export default class ApiError extends React.Component {
 
   render() {
     return  (
-      <View style={styles.preloader}>
-      <Text style={styles.preloaderText}>{this.state.errorMessage}</Text>
+      <View style={styles.apiError}>
+      <Text style={styles.apiErrorText}>{this.state.errorMessage}</Text>
       <Image style={styles.errorIcon} source={require('../assets/images/error.png')} />
       <Button 
         buttonStyle={styles.reFetchButton}
@@ -29,13 +33,13 @@ export default class ApiError extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  preloader: {
+  apiError: {
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center'
   },
-  preloaderText: {
+  apiErrorText: {
     fontFamily: FontStyle.boldFontFamily,
     color: Colors.textBlackColor,
     fontSize: FontStyle.defaultTitleSize,

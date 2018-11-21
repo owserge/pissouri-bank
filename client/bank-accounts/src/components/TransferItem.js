@@ -1,12 +1,15 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
-import { prettifyBalance } from '../helpers/Convertors'
+import { prettifyBalance } from '../helpers/Convertors';
 
 import Colors from '../constants/Colors';
 import FontStyle from '../constants/FontStyle';
 import Layout from '../constants/Layout';
 
+/**
+ * Renders an item for one transfer.
+ */
 export default class TransferItem extends React.Component {
 
   componentWillMount(){

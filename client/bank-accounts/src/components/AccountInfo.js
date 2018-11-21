@@ -6,8 +6,11 @@ import FontStyle from '../constants/FontStyle';
 import Layout from '../constants/Layout';
 import Colors from '../constants/Colors';
 
-import { normalizeBalance } from '../helpers/Convertors'
+import { normalizeBalance } from '../helpers/Convertors';
 
+/**
+ * Renders account profile and credentials details with current balance.
+ */
 export default class AccountInfo extends React.Component {
 
   componentWillMount(){
@@ -30,17 +33,17 @@ export default class AccountInfo extends React.Component {
       <View style={styles.line}>
         <View style={styles.accountInfoView}>
           <View style={styles.accountInfoLeftSide}>
-            <Text style={[styles.accountInfoViewTitle, styles.accountInfoLeftAligment]}>
+            <Text style={[styles.accountInfoViewTitle, styles.accountInfoLeftAlignment]}>
               {this.state.firstName} {this.state.lastName}
             </Text>
-            <Text style={[styles.acountInfoText, styles.accountInfoLeftAligment]}>{this.state.number}</Text>
+            <Text style={[styles.accountInfoText, styles.accountInfoLeftAlignment]}>{this.state.number}</Text>
           </View>
             <Text style={styles.accountInfoViewTitle}>Route information</Text>
-            <Text style={styles.acountInfoText}>IBAN: {this.state.iban}</Text>
-            <Text style={styles.acountInfoText}>BIC: {this.state.bic}</Text>
-            <Text style={styles.acountInfoText}>SWIFT Code: {this.state.swiftCode}</Text>
-            <Text style={styles.acountInfoText}>Sort Code: {this.state.sortCode}</Text>
-            <Text style={styles.acountInfoText}>Address: {this.state.address}</Text>
+            <Text style={styles.accountInfoText}>IBAN: {this.state.iban}</Text>
+            <Text style={styles.accountInfoText}>BIC: {this.state.bic}</Text>
+            <Text style={styles.accountInfoText}>SWIFT Code: {this.state.swiftCode}</Text>
+            <Text style={styles.accountInfoText}>Sort Code: {this.state.sortCode}</Text>
+            <Text style={styles.accountInfoText}>Address: {this.state.address}</Text>
           </View>
         <View style={styles.accountInfoBalance}>
           <Text style={styles.accountInfoBalanceTitle}>Current Balance: </Text>
@@ -53,7 +56,6 @@ export default class AccountInfo extends React.Component {
     );
   }
 }
-
 
 const styles = StyleSheet.create({
   accountInfoView: {
@@ -68,22 +70,22 @@ const styles = StyleSheet.create({
     paddingLeft: Layout.paddingStep * 3,
     position: "absolute"
   },
-  accountInfoLeftAligment: {
+  accountInfoLeftAlignment: {
     textAlign: 'left',
   },
-  acountInfoText: {
+  accountInfoText: {
     fontFamily: FontStyle.regularFontFamily,
     marginTop: Layout.paddingStep,
     fontSize: FontStyle.defaultTextSize,
     textAlign: 'right',
-    color: Colors.textLigthColor
+    color: Colors.textLightColor
   }, 
   accountInfoViewTitle: {
     fontFamily: FontStyle.boldFontFamily,
     marginBottom: Layout.paddingStep,
     fontSize: FontStyle.defaultTitleSize,
     textAlign: 'right',
-    color: Colors.textLigthColor
+    color: Colors.textLightColor
   },
   accountInfoBalance: {
     fontFamily: FontStyle.boldFontFamily,

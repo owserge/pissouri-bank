@@ -4,15 +4,14 @@ import { Text, View, StyleSheet, Image, ActivityIndicator } from 'react-native';
 import Colors from '../constants/Colors';
 import FontStyle from '../constants/FontStyle';
 
+/**
+ * Renders preloader component showed while fetching data from the gateway.
+ */
 export default class Preloader extends React.Component {
-
   render() {
     return  (
       <View style={styles.preloader}>
-      <ActivityIndicator 
-          size="large" 
-          color={Colors.backgroundBlueColor} 
-      />
+      <ActivityIndicator size="large" color={Colors.backgroundBlueColor} />
       <Image style={styles.logo} source={require('../assets/images/logo.png')} />
       <Text style={styles.preloaderText}>Loading...</Text>
       </View>

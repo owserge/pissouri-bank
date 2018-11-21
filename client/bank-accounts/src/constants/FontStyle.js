@@ -1,3 +1,6 @@
+/**
+ * All the font styles used in UI should be presented here.
+ */
 export default {
   defaultTextSize: 15,
   defaultTitleSize: 16,

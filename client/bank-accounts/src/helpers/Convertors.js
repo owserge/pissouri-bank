@@ -1,8 +1,19 @@
-import Currencies from '../constants/Currencies'
+import Currencies from '../constants/Currencies';
 
+/**
+ * Trim amount field if needed and add comas to it.
+ * @param x
+ * @returns {string}
+ */
 export function normalizeBalance (x) {
   return parseFloat(x).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
+
+/**
+ * Converts address object to a readable string.
+ * @param data
+ * @returns {string}
+ */
 export function addressObjectToString(data) {
   return  (data.country ? data.country + " ":"") +
           (data.postal_code ? data.postal_code + " ":"") +
@@ -10,6 +21,14 @@ export function addressObjectToString(data) {
           (data.city ? data.city + " ":"") +
           (data.street ? data.street + " ":"");
 }
+
+/**
+ * Makes the amount, the currency and the type (IN or OUT) of the transfer
+ * nice and clean according to the UI requirements.
+ * @param amount
+ * @param currency
+ * @returns {string}
+ */
 export function prettifyBalance(amount, currency) {
   let sign = "";
   currency = Currencies[currency].symbol;

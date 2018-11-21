@@ -5,14 +5,17 @@ import { getAccount, getTransfers } from '../gateway/Api';
 
 import Transfers from '../components/Transfers';
 import AccountInfo from '../components/AccountInfo';
-import Preloader from '../components/Preloader'
-import ApiError from '../components/ApiError'
+import Preloader from '../components/Preloader';
+import ApiError from '../components/ApiError';
 
 import { addressObjectToString } from '../helpers/Convertors';
 
 import ContainerStyle from '../constants/ContainerStyle';
 import HeaderStyle from '../constants/HeaderStyle';
 
+/**
+ * Renders the Overview main home screen.
+ */
 export default class HomeScreen extends React.Component {
   
   constructor(props) {

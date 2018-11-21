@@ -1,3 +1,6 @@
+/**
+ * Information of the currencies.
+ */
 export default {
   EUR: {
     symbol: '€'

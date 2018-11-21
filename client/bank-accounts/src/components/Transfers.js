@@ -8,8 +8,11 @@ import Colors from '../constants/Colors';
 import FontStyle from '../constants/FontStyle';
 import Layout from '../constants/Layout';
 
+/**
+ * Renders list of transfers.
+ */
 class Transfers extends React.Component {
-  
+
   componentWillMount(){
     this.setState({
       transfers: this.props.transfers,
@@ -17,7 +20,6 @@ class Transfers extends React.Component {
   }
 
   render() {
-
     const transferItems = this.state.transfers.map((item) => 
       <TouchableHighlight 
         key={item.id}

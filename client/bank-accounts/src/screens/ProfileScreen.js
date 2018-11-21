@@ -1,18 +1,20 @@
 import React from 'react';
 import { Image, Text, StyleSheet, View } from 'react-native';
 
-import { getAccount } from '../gateway/Api'
+import { getAccount } from '../gateway/Api';
 
-import Preloader from '../components/Preloader'
-import ApiError from '../components/ApiError'
+import Preloader from '../components/Preloader';
+import ApiError from '../components/ApiError';
 
 import Colors from '../constants/Colors';
 import FontStyle from '../constants/FontStyle';
 import Layout from '../constants/Layout';
-
 import HeaderStyle from '../constants/HeaderStyle';
 import ContainerStyle from '../constants/ContainerStyle';
 
+/**
+ * Renders profile details information.
+ */
 export default class ProfileScreen extends React.Component {
 
   constructor(props) {

@@ -5,6 +5,9 @@ import FontStyle from '../constants/FontStyle';
 import Layout from '../constants/Layout';
 import Colors from '../constants/Colors';
 
+/**
+ * Renders details (originator/beneficiary) of the transfer.
+ */
 export default class AccountInfo extends React.Component {
 
   componentWillMount(){

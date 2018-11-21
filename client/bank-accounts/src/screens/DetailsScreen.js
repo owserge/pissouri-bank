@@ -3,17 +3,20 @@ import { ScrollView, Image, StyleSheet, View, TouchableOpacity } from 'react-nat
 
 import { getTransferById } from '../gateway/Api';
 
-import { addressObjectToString } from '../helpers/Convertors';
-
-import ApiError from '../components/ApiError'
-import TransferItem from '../components/TransferItem'
-import HeaderStyle from '../constants/HeaderStyle';
-import ContainerStyle from '../constants/ContainerStyle';
+import ApiError from '../components/ApiError';
+import Preloader from '../components/Preloader'
+import TransferItem from '../components/TransferItem';
 import TransferDetails from '../components/TransferDetails';
 
-import Preloader from '../components/Preloader'
+import { addressObjectToString } from '../helpers/Convertors';
 
-export default class ProfileScreen extends React.Component {
+import HeaderStyle from '../constants/HeaderStyle';
+import ContainerStyle from '../constants/ContainerStyle';
+
+/**
+ * Renders the screen with details of the transfer.
+ */
+export default class DetailsScreen extends React.Component {
 
   constructor(props) {
     super(props);
@@ -28,7 +31,6 @@ export default class ProfileScreen extends React.Component {
       isTransfersDataLoading: true,
       isError: false
     })
-    
     getTransferById(this.props.navigation.state.params.transferId).then((res) => {
       this.setState({
         data: res.data,

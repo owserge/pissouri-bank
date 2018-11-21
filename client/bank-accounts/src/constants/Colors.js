@@ -1,3 +1,6 @@
+/**
+ * All the colors used in UI should be presented here.
+ */
 export default {
   backgroundBlueColor: '#3887E0',
   backgroundLightColor: '#FFFFFF',
@@ -5,11 +8,11 @@ export default {
   backgroundGrayColor: '#EEE',
 
   textColor: '#414246',
-  textLigthColor: '#FFFFFF',
+  textLightColor: '#FFFFFF',
   textDarkColor: '#C3C4C8',
   textBlackColor: '#151515',
   textGrayColor: '#A5A5A5',
   textPositiveTransactionColor: '#85C359',
 
-  lineColor: '#CCC',
+  lineColor: '#CCC'
 };
