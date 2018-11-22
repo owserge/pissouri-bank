@@ -1,0 +1,16 @@
+server:
+  port: 8765
+
+spring:
+  profiles: default
+
+  datasource:
+    url: jdbc:h2:mem:test;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
+    maxPoolSize: 8
+    connectTimeout: 1800
+
+  jpa:
+    open-in-view: false
