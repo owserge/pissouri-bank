@@ -1,4 +1,4 @@
--- V1.1.0 Transfer bootstrap script
+-- V1.1.1 Transfer bootstrap script
 -- A list of bank account transfers for the bootstrap account.
 
 -- Bank route information
