@@ -15,7 +15,8 @@ import java.time.ZonedDateTime;
 import java.util.Arrays;
 import java.util.Optional;
 
-import static com.pissouri.dto.TransferStatusCode.*;
+import static com.pissouri.dto.TransferStatusCode.ACCEPTED;
+import static com.pissouri.dto.TransferStatusCode.PENDING;
 import static io.restassured.RestAssured.given;
 import static java.time.ZoneOffset.UTC;
 import static org.hamcrest.CoreMatchers.*;
@@ -34,7 +35,7 @@ public class TransferControllerApiTest extends RestApiTest {
 
         long transferId = 1L;
 
-        givenTransferExists(transferId);
+        givenTransfer(transferId);
 
         given()
                 .when()
@@ -103,7 +104,7 @@ public class TransferControllerApiTest extends RestApiTest {
     @Test
     public void getAccountTransfers_shouldReturnListOfTransferDto() {
 
-        givenTransfersExist();
+        givenTransfers();
 
         given()
                 .when()
@@ -159,18 +160,18 @@ public class TransferControllerApiTest extends RestApiTest {
                 .body("data[1].beneficiary.address.country", equalTo("UK"));
     }
 
-    private void givenTransferExists(long transferId) {
+    private void givenTransfer(long transferId) {
 
-        when(transferRepository.getTransferById(eq(transferId)))
+        when(transferRepository.findById(eq(transferId)))
                 .thenReturn(Optional.of(new Transfer()
-                        .setId(transferId)
-                        .setAmount(100)
-                        .setCurrency("EUR")
-                        .setStatus(ACCEPTED)
-                        .setBalanceAfter(100)
-                        .setReference("e2b70dba-e6b3-11e8-9f32-f2801f1b9fd1")
-                        .setCreatedAt(ZonedDateTime.of(2018, 7, 1, 0, 0, 0, 0, UTC))
-                        .setOriginator(new BankRoute()
+                                .setId(transferId)
+                                .setAmount(100)
+                                .setCurrency("EUR")
+                                .setStatus(ACCEPTED)
+                                .setBalanceAfter(100)
+                                .setReference("e2b70dba-e6b3-11e8-9f32-f2801f1b9fd1")
+                                .setCreatedAt(ZonedDateTime.of(2018, 7, 1, 0, 0, 0, 0, UTC))
+                        .setBankRoute(new BankRoute()
                                 .setId(transferId)
                                 .setFullName("Alcohol co. Ltd")
                                 .setBic("PBBE10080")
@@ -184,9 +185,9 @@ public class TransferControllerApiTest extends RestApiTest {
                                 .setCountry("CY"))));
     }
 
-    private void givenTransfersExist() {
+    private void givenTransfers() {
 
-        when(transferRepository.getTransfers()).thenReturn(Arrays.asList(
+        when(transferRepository.findAll()).thenReturn(Arrays.asList(
                 new Transfer()
                         .setId(1L)
                         .setAmount(100)
@@ -195,7 +196,7 @@ public class TransferControllerApiTest extends RestApiTest {
                         .setBalanceAfter(1000)
                         .setReference("e2b70dba-e6b3-11e8-9f32-f2801f1b9fd1")
                         .setCreatedAt(ZonedDateTime.of(2018, 7, 1, 0, 0, 0, 0, UTC))
-                        .setOriginator(new BankRoute()
+                        .setBankRoute(new BankRoute()
                                 .setId(1L)
                                 .setFullName("Burgers Paphos")
                                 .setBic("PBBE10080")
@@ -216,7 +217,7 @@ public class TransferControllerApiTest extends RestApiTest {
                         .setBalanceAfter(900)
                         .setReference("1189aca5-e628-4be6-82b7-d12b37e437d0")
                         .setCreatedAt(ZonedDateTime.of(2018, 7, 2, 0, 0, 0, 0, UTC))
-                        .setBeneficiary(new BankRoute()
+                        .setBankRoute(new BankRoute()
                                 .setId(2L)
                                 .setFullName("Burgers Nicosia")
                                 .setBic("NVBE10234")
@@ -227,7 +228,6 @@ public class TransferControllerApiTest extends RestApiTest {
                                 .setStreet("1 God Save the Queen St")
                                 .setCity("London")
                                 .setPostalCode("E7500")
-                                .setCountry("UK"))
-        ));
+                                .setCountry("UK"))));
     }
 }

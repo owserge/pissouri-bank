@@ -28,7 +28,7 @@ public class TransferService {
         if (id == null || id <= 0) throw new IllegalArgumentException(String.format("Invalid argument %d", id));
 
         return transferRepository
-                .getTransferById(id)
+                .findById(id)
                 .map(TransferService::mapToDto)
                 .orElseThrow(() -> new ResourceNotFoundException(String.format("Transfer %d not found", id)));
     }
@@ -36,7 +36,7 @@ public class TransferService {
     public List<TransferDto> getTransfers() {
 
         return transferRepository
-                .getTransfers()
+                .findAll()
                 .stream()
                 .map(TransferService::mapToDto)
                 .collect(Collectors.toList());
@@ -44,21 +44,32 @@ public class TransferService {
 
     private static TransferDto mapToDto(Transfer transfer) {
 
-        return new TransferDto()
+        TransferDto transferDto = new TransferDto()
                 .setId(transfer.getId())
                 .setAmount(transfer.getAmount())
                 .setCurrency(transfer.getCurrency())
                 .setBalanceAfter(transfer.getBalanceAfter())
                 .setReference(transfer.getReference())
                 .setStatus(transfer.getStatus())
-                .setOriginator(mapToDto(transfer.getOriginator()))   // null if null
-                .setBeneficiary(mapToDto(transfer.getBeneficiary())) // null if null
                 .setCreatedAt(transfer.getCreatedAt());
+
+        BankRouteDto bankRouteDto = mapToDto(transfer.getBankRoute());
+
+        if (transfer.getAmount() < 0) transferDto.setBeneficiary(bankRouteDto);
+        else transferDto.setOriginator(bankRouteDto);
+
+        return transferDto;
     }
 
     private static BankRouteDto mapToDto(BankRoute bankRoute) {
 
         if (bankRoute == null) return null;
+
+        AddressDto addressDto = new AddressDto()
+                .setStreet(bankRoute.getStreet())
+                .setCity(bankRoute.getCity())
+                .setPostalCode(bankRoute.getPostalCode())
+                .setCountry(bankRoute.getCountry());
 
         return new BankRouteDto()
                 .setFullName(bankRoute.getFullName())
@@ -67,10 +78,6 @@ public class TransferService {
                 .setSwiftCode(bankRoute.getSwiftCode())
                 .setAccountNumber(bankRoute.getAccountNumber())
                 .setSortCode(bankRoute.getSortCode())
-                .setAddress(new AddressDto()
-                        .setStreet(bankRoute.getStreet())
-                        .setCity(bankRoute.getCity())
-                        .setPostalCode(bankRoute.getPostalCode())
-                        .setCountry(bankRoute.getCountry()));
+                .setAddress(addressDto);
     }
 }

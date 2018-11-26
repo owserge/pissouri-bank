@@ -18,4 +18,3 @@ spring:
   flyway:
     locations:
       filesystem: db/migration/schema,db/migration/bootstrap
-    out-of-order: true

@@ -17,5 +17,5 @@ CREATE TABLE IF NOT EXISTS bank_route (
     updated_at      DATETIME        NULL ON UPDATE CURRENT_TIMESTAMP
 );
 
-CREATE UNIQUE INDEX idx_bank_route_iban_bic         ON bank_route (iban, bic);
-CREATE UNIQUE INDEX idx_bank_route_account_number   ON bank_route (account_number, sort_code);
+CREATE UNIQUE INDEX uq_bank_route_iban_bic         ON bank_route (iban, bic);
+CREATE UNIQUE INDEX uq_bank_route_account_number   ON bank_route (account_number, sort_code);

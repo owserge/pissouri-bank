@@ -1,4 +1,4 @@
--- V1.1.0 Account bootstrap migration
+-- V1.1.0 Account bootstrap script
 -- Creates an account, by recording account details and account bank routing information.
 
 -- The account registration record
