@@ -1,5 +1,7 @@
 package com.pissouri.data;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.util.Objects;
@@ -7,17 +9,14 @@ import java.util.Objects;
 /**
  * Account registration details, associated with an {@link Account} record
  */
+@Entity
 public class AccountRegistration {
 
     /**
      * Account registration database record id
      */
+    @Id
     private long id;
-
-    /**
-     * Account database record id
-     */
-    private long accountId;
 
     /**
      * Registered customer first name
@@ -82,17 +81,6 @@ public class AccountRegistration {
     public AccountRegistration setId(long id) {
 
         this.id = id;
-        return this;
-    }
-
-    public long getAccountId() {
-
-        return accountId;
-    }
-
-    public AccountRegistration setAccountId(long accountId) {
-
-        this.accountId = accountId;
         return this;
     }
 
@@ -223,14 +211,13 @@ public class AccountRegistration {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AccountRegistration that = (AccountRegistration) o;
-        return id == that.id &&
-                accountId == that.accountId;
+        return id == that.id;
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, accountId);
+        return Objects.hash(id);
     }
 
     @Override
@@ -238,7 +225,6 @@ public class AccountRegistration {
 
         return "AccountRegistration{" +
                 "id=" + id +
-                ", accountId=" + accountId +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", dateOfBirth=" + dateOfBirth +

@@ -1,12 +1,12 @@
-CREATE TABLE bank_route (
+CREATE TABLE IF NOT EXISTS bank_route (
 
     id              BIGINT(32)      UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     full_name       VARCHAR(128)    NULL,
-    iban            VARCHAR(32)     NOT NULL,
-    bic             VARCHAR(16)     NOT NULL,
-    swift_code      VARCHAR(32)     NOT NULL,
-    account_number  VARCHAR(32)     NOT NULL,
-    sort_code       VARCHAR(16)     NOT NULL,
+    iban            VARCHAR(32)     NULL,
+    bic             VARCHAR(16)     NULL,
+    swift_code      VARCHAR(32)     NULL,
+    account_number  VARCHAR(32)     NULL,
+    sort_code       VARCHAR(16)     NULL,
     nationality     VARCHAR(128)    NULL,
     street          VARCHAR(256)    NULL,
     city            VARCHAR(128)    NULL,

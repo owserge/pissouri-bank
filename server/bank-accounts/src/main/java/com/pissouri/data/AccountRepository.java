@@ -1,8 +1,12 @@
 package com.pissouri.data;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 import java.util.Optional;
 
-public interface AccountRepository {
+@Repository
+public interface AccountRepository extends JpaRepository<Account, Long> {
 
-    Optional<Account> getAccount();
+    Optional<Account> findById(long id);
 }

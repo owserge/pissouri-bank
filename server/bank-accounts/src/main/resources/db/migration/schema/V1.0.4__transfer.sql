@@ -1,4 +1,4 @@
-CREATE TABLE transfer (
+CREATE TABLE IF NOT EXISTS transfer (
 
     id              BIGINT(32)      UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     amount          BIGINT          NOT NULL,

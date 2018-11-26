@@ -10,7 +10,7 @@ import javax.sql.DataSource;
 
 @SuppressWarnings("unused")
 @Configuration
-public class DbConfig {
+public class DataSourceConfig {
 
     @Value("${spring.datasource.url}")
     private String url;

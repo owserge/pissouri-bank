@@ -1,16 +1,22 @@
 package com.pissouri.data;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.time.ZonedDateTime;
 import java.util.Objects;
 
 /**
  * A registered customer bank account
  */
+@Entity
 public class Account {
 
     /**
      * Account database record id
      */
+    @Id
     private long id;
 
     /**
@@ -36,11 +42,15 @@ public class Account {
     /**
      * Account bank routing details
      */
+    @ManyToOne
+    @JoinColumn(name = "bank_route_id")
     private BankRoute bankRoute;
 
     /**
      * Account registration details
      */
+    @ManyToOne
+    @JoinColumn(name = "registration_id")
     private AccountRegistration registration;
 
     /**

@@ -12,6 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.nullValue;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.when;
 
 @ApiTest
@@ -24,7 +25,7 @@ public class ErrorAdviceApiTest extends RestApiTest {
     @Test
     public void shouldReturnInternalServerErrorWithResponseDto_whenUnhandledExceptionThrown() {
 
-        when(accountService.getAccount()).thenThrow(new RuntimeException("Ah shit"));
+        when(accountService.getAccount(anyLong())).thenThrow(new RuntimeException("Ah shit"));
 
         given()
                 .when()

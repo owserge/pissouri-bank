@@ -1,4 +1,4 @@
-CREATE TABLE account (
+CREATE TABLE IF NOT EXISTS account (
 
     id              BIGINT(32)      UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     registration_id BIGINT(32)      UNSIGNED NOT NULL,
@@ -10,7 +10,7 @@ CREATE TABLE account (
     created_at      DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at      DATETIME        NULL ON UPDATE CURRENT_TIMESTAMP,
 
-    CONSTRAINT fk_account_registration FOREIGN KEY (registration_id) REFERENCES registration (id)
+    CONSTRAINT fk_account_registration FOREIGN KEY (registration_id) REFERENCES account_registration (id)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
 

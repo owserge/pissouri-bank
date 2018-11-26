@@ -5,12 +5,17 @@ spring:
   profiles: default, test
 
   datasource:
-    url: jdbc:h2:mem:test;DB_CLOSE_DELAY=-1
+    url: jdbc:h2:mem:pissouri-db;DB_CLOSE_DELAY=-1
     username: sa
-    password:
+    password: sa
     driverClassName: org.h2.Driver
     maxPoolSize: 8
     connectTimeout: 1800
 
   jpa:
     open-in-view: false
+
+  flyway:
+    locations:
+      filesystem: db/migration/schema,db/migration/bootstrap
+    out-of-order: true

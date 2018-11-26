@@ -24,10 +24,10 @@ public class AccountService {
         this.accountRepository = accountRepository;
     }
 
-    public AccountDto getAccount() {
+    public AccountDto getAccount(long id) {
 
         return accountRepository
-                .getAccount()
+                .findById(id)
                 .map(AccountService::mapToDto)
                 .orElseThrow(() -> new ResourceNotFoundException("Account not found"));
     }
