@@ -5,7 +5,8 @@ import Colors from '../constants/Colors';
 import FontStyle from '../constants/FontStyle';
 
 /**
- * Renders preloader component showed while fetching data from the gateway.
+ * Renders preloader component with logo and description showed
+ * while fetching data from the gateway.
  */
 export default class Preloader extends React.Component {
   render() {
@@ -35,7 +36,7 @@ const styles = StyleSheet.create({
   },
   logo: {
     marginBottom: 50,
-    width: 200, 
+    width: 200,
     height: 200,
     marginTop: 50
   }

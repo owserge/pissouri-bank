@@ -5,8 +5,7 @@ import Colors from '../constants/Colors';
 import FontStyle from '../constants/FontStyle';
 
 /**
- * Renders an error screen with button "Try again" and error message,
- * as soon as any error occurs.
+ * Renders an error screen with button "Try again" and error message.
  */
 export default class ApiError extends React.Component {
  

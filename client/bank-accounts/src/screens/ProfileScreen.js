@@ -3,7 +3,7 @@ import { Image, Text, StyleSheet, View } from 'react-native';
 
 import { getAccount } from '../gateway/Api';
 
-import Preloader from '../components/Preloader';
+import PreloaderLight from '../components/PreloaderLight';
 import ApiError from '../components/ApiError';
 
 import Colors from '../constants/Colors';
@@ -31,7 +31,6 @@ export default class ProfileScreen extends React.Component {
     })
 
     getAccount().then((res) => {
-      console.log(res);
       this.setState({
         registration: res.data.registration,
         isAccountDataLoading: false
@@ -54,7 +53,7 @@ export default class ProfileScreen extends React.Component {
   };  
 
   render() {
-    if (this.state.isError == true) {
+    if (this.state.isError) {
       return ( 
       <ApiError 
         errorMessage={this.state.lastErrorMessage} 
@@ -62,7 +61,7 @@ export default class ProfileScreen extends React.Component {
       /> );
 
     } else if (this.state.isAccountDataLoading) {
-      return ( <Preloader /> ); 
+      return ( <PreloaderLight /> );
       
     } else {
       const registration = this.state.registration;
