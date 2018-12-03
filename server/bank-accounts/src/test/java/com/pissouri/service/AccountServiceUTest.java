@@ -1,5 +1,7 @@
 package com.pissouri.service;
 
+import com.pissouri.TypeConversions;
+import com.pissouri.converter.AccountDtoConverter;
 import com.pissouri.data.Account;
 import com.pissouri.data.AccountRegistration;
 import com.pissouri.data.AccountRepository;
@@ -7,6 +9,7 @@ import com.pissouri.data.BankRoute;
 import com.pissouri.dto.AccountDto;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.core.convert.ConversionService;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -22,14 +25,14 @@ import static org.mockito.Mockito.when;
 public class AccountServiceUTest {
 
     private AccountRepository accountRepository;
-
     private AccountService accountService;
 
     @Before
     public void setup() {
 
         accountRepository = mock(AccountRepository.class);
-        accountService = new AccountService(accountRepository);
+        ConversionService conversionService = TypeConversions.serviceOf(new AccountDtoConverter());
+        accountService = new AccountService(accountRepository, conversionService);
     }
 
     @Test
@@ -70,8 +73,8 @@ public class AccountServiceUTest {
         assertThat(accountDto.getBankRoute().getAddress().getPostalCode()).isEqualTo("5200");
         assertThat(accountDto.getBankRoute().getAddress().getCountry()).isEqualTo("CY");
 
-        assertThat(accountDto.getCreatedAt()).isEqualTo(ZonedDateTime.of(LocalDateTime.of(2018, 01, 01, 0, 0), UTC));
-        assertThat(accountDto.getUpdatedAt()).isEqualTo(ZonedDateTime.of(LocalDateTime.of(2018, 01, 01, 0, 0), UTC));
+        assertThat(accountDto.getCreatedAt()).isEqualTo(ZonedDateTime.of(LocalDateTime.of(2018, 1, 1, 0, 0), UTC));
+        assertThat(accountDto.getUpdatedAt()).isEqualTo(ZonedDateTime.of(LocalDateTime.of(2018, 1, 1, 0, 0), UTC));
     }
 
     private void givenAccount() {
@@ -111,7 +114,7 @@ public class AccountServiceUTest {
                 .setReference("4d2e6b5b-e1db-4227-b117-c3644b4f31a6")
                 .setBankRoute(bankRoute)
                 .setRegistration(registration)
-                .setCreatedAt(ZonedDateTime.of(LocalDateTime.of(2018, 01, 01, 0, 0), UTC))
-                .setUpdatedAt(ZonedDateTime.of(LocalDateTime.of(2018, 01, 01, 0, 0), UTC))));
+                .setCreatedAt(ZonedDateTime.of(LocalDateTime.of(2018, 1, 1, 0, 0), UTC))
+                .setUpdatedAt(ZonedDateTime.of(LocalDateTime.of(2018, 1, 1, 0, 0), UTC))));
     }
 }

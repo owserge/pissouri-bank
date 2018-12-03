@@ -1,12 +1,15 @@
 package com.pissouri.service;
 
 
+import com.pissouri.TypeConversions;
+import com.pissouri.converter.TransferDtoConverter;
 import com.pissouri.data.BankRoute;
 import com.pissouri.data.Transfer;
 import com.pissouri.data.TransferRepository;
 import com.pissouri.dto.TransferDto;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.core.convert.ConversionService;
 
 import java.time.ZonedDateTime;
 import java.util.Arrays;
@@ -24,14 +27,14 @@ import static org.mockito.Mockito.when;
 public class TransferServiceUTest {
 
     private TransferRepository transferRepository;
-
     private TransferService transferService;
 
     @Before
     public void setup() {
 
         transferRepository = mock(TransferRepository.class);
-        transferService = new TransferService(transferRepository);
+        ConversionService conversionService = TypeConversions.serviceOf(new TransferDtoConverter());
+        transferService = new TransferService(transferRepository, conversionService);
     }
 
     @Test
