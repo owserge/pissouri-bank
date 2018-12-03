@@ -26,7 +26,7 @@ public class AccountControllerApiTest extends RestApiTest {
                 .contentType(ContentType.JSON)
                 .body("status_code", equalTo(2000))
                 .body("status_text", equalTo("ok"))
-                .body("data.id", equalTo(42))
+                .body("data.id", equalTo(1))
                 .body("data.number", equalTo("PB100042"))
                 .body("data.currency", equalTo("EUR"))
                 .body("data.balance", equalTo(32750))
@@ -34,8 +34,8 @@ public class AccountControllerApiTest extends RestApiTest {
                 .body("data.registration.first_name", equalTo("John"))
                 .body("data.registration.last_name", equalTo("Cash"))
                 .body("data.registration.dob", equalTo("1985-10-25"))
-                .body("data.registration.nationality", equalTo("British"))
-                .body("data.registration.address.street", equalTo("1 God Save the Queen Str"))
+                .body("data.registration.nationality", equalTo("GB"))
+                .body("data.registration.address.street", equalTo("1 God Save the Queen Ave"))
                 .body("data.registration.address.city", equalTo("London"))
                 .body("data.registration.address.postal_code", equalTo("EC2700"))
                 .body("data.registration.address.country", equalTo("UK"))
@@ -49,7 +49,7 @@ public class AccountControllerApiTest extends RestApiTest {
                 .body("data.bank_route.address.city", equalTo("Paphos"))
                 .body("data.bank_route.address.postal_code", equalTo("5200"))
                 .body("data.bank_route.address.country", equalTo("CY"))
-                .body("data.created_at", equalTo("2018-07-01T00:00:00Z"))
-                .body("data.updated_at", equalTo("2018-07-01T00:00:00Z"));
+                .body("data.created_at", equalTo("2018-07-01T00:00:00+03:00"))
+                .body("data.updated_at", equalTo("2018-07-01T00:00:00+03:00"));
     }
 }

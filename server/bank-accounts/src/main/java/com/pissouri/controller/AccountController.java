@@ -8,6 +8,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@SuppressWarnings({"WeakerAccess", "unused"})
 @RestController
 public class AccountController {
 
@@ -22,6 +23,6 @@ public class AccountController {
     @GetMapping(value = "/account", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseDto<AccountDto> getAccount() {
 
-        return ResponseDto.ok(accountService.getAccount());
+        return ResponseDto.ok(accountService.getAccount(1L));
     }
 }

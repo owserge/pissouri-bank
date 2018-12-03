@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.servlet.http.HttpServletRequest;
 
+@SuppressWarnings("unused")
 @RestControllerAdvice
 public class ErrorAdvice {
 

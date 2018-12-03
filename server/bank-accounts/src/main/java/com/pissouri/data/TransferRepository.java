@@ -1,22 +1,12 @@
 package com.pissouri.data;
 
-import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 import java.util.Optional;
 
-/**
- * Data access repository for {@link Transfer} data record models
- */
-public interface TransferRepository {
+@Repository
+public interface TransferRepository extends JpaRepository<Transfer, Long> {
 
-    /**
-     * Retrieve a {@link Transfer} data record by record id
-     * @return The corresponding {@link Transfer} record, empty if not found
-     */
-    Optional<Transfer> getTransferById(Long id);
-
-    /**
-     * Retrieve a list of {@link Transfer} data records
-     * @return List of {@link Transfer} data records
-     */
-    List<Transfer> getTransfers();
+    Optional<Transfer> findById(Long id);
 }

@@ -4,7 +4,7 @@ import { ScrollView, Image, StyleSheet, View, TouchableOpacity } from 'react-nat
 import { getTransferById } from '../gateway/Api';
 
 import ApiError from '../components/ApiError';
-import Preloader from '../components/Preloader'
+import PreloaderLight from '../components/PreloaderLight'
 import TransferItem from '../components/TransferItem';
 import TransferDetails from '../components/TransferDetails';
 
@@ -71,7 +71,7 @@ export default class DetailsScreen extends React.Component {
       );
 
     } else if (this.state.isTransfersDataLoading) {
-      return ( <Preloader /> ); 
+      return ( <PreloaderLight /> );
       
     } else {
       const data = this.state.data;

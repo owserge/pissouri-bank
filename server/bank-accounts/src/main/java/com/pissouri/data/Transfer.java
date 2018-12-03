@@ -2,14 +2,20 @@ package com.pissouri.data;
 
 import com.pissouri.dto.TransferStatusCode;
 
+import javax.persistence.*;
 import java.time.ZonedDateTime;
 import java.util.Objects;
 
+/**
+ * A bank account transfer
+ */
+@Entity
 public class Transfer {
 
     /**
      * Transfer database record id
      */
+    @Id
     private long id;
 
     /**
@@ -38,14 +44,11 @@ public class Transfer {
     private String reference;
 
     /**
-     * Bank routing information for the transfer originator (if transfer is credit, incoming)
+     * Bank routing information for the transfer originator or beneficiary
      */
-    private BankRoute originator;
-
-    /**
-     * Bank routing information for the transfer beneficiary (if transfer is debit, outgoing)
-     */
-    private BankRoute beneficiary;
+    @ManyToOne
+    @JoinColumn(name = "bank_route_id")
+    private BankRoute bankRoute;
 
     /**
      * The exact date and time for when this transfer was executed
@@ -118,25 +121,14 @@ public class Transfer {
         return this;
     }
 
-    public BankRoute getOriginator() {
+    public BankRoute getBankRoute() {
 
-        return originator;
+        return bankRoute;
     }
 
-    public Transfer setOriginator(BankRoute originator) {
+    public Transfer setBankRoute(BankRoute bankRoute) {
 
-        this.originator = originator;
-        return this;
-    }
-
-    public BankRoute getBeneficiary() {
-
-        return beneficiary;
-    }
-
-    public Transfer setBeneficiary(BankRoute beneficiary) {
-
-        this.beneficiary = beneficiary;
+        this.bankRoute = bankRoute;
         return this;
     }
 
@@ -176,8 +168,7 @@ public class Transfer {
                 ", status='" + status + '\'' +
                 ", balanceAfter=" + balanceAfter +
                 ", reference='" + reference + '\'' +
-                ", originator=" + originator +
-                ", beneficiary=" + beneficiary +
+                ", bankRoute=" + bankRoute +
                 ", createdAt=" + createdAt +
                 '}';
     }

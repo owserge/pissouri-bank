@@ -1,22 +1,21 @@
 package com.pissouri.data;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.time.ZonedDateTime;
 import java.util.Objects;
 
 /**
  * Bank routing details for a registered bank account, associated with an {@link Account} record
  */
+@Entity
 public class BankRoute {
 
     /**
      * Bank route database record id
      */
+    @Id
     private long id;
-
-    /**
-     * Account database record id
-     */
-    private long accountId;
 
     /**
      * Beneficiary (or originator) full name
@@ -91,17 +90,6 @@ public class BankRoute {
     public BankRoute setId(long id) {
 
         this.id = id;
-        return this;
-    }
-
-    public long getAccountId() {
-
-        return accountId;
-    }
-
-    public BankRoute setAccountId(long accountId) {
-
-        this.accountId = accountId;
         return this;
     }
 
@@ -268,7 +256,6 @@ public class BankRoute {
 
         return "BankRoute{" +
                 "id=" + id +
-                ", accountId=" + accountId +
                 ", fullName='" + fullName + '\'' +
                 ", iban='" + iban + '\'' +
                 ", bic='" + bic + '\'' +

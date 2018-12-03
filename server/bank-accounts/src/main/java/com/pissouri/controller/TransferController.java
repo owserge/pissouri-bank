@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@SuppressWarnings({"WeakerAccess", "unused"})
 @RestController
 public class TransferController {
 

@@ -21,6 +21,7 @@ public @interface ApiTest {
     /**
      * The configuration classes to use. Alias for {@link SpringBootTest#classes()}.
      */
+    @SuppressWarnings("unused")
     @AliasFor(annotation = SpringBootTest.class, attribute = "classes")
     Class<?>[] config() default {};
 }
