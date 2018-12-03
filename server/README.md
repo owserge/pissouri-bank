@@ -149,12 +149,12 @@ The endpoint returns a list of bank transfers for this account.
 #### Parameters
 - `type`: Type of bank transfer, options are `IN` (for _INCOMING_), and `OUT` (for _OUTGOING_)
 - `status`: Status of transfer, options are `PENDING`, `ACCEPTED`, `REJECTED`
-- `page_size`: The number of elements to retrieve per page
+- `size`: The number of elements to retrieve per page
 - `page`: Page number
 	
 All parameters are optional.
 
-In case `page_size` is not provided, the API will return a _maximum of 10 records_.
+In case `size` is not provided, the API will return a _maximum of 10 records_.
 
 In case `page` is not provided, the API will return the _first page_ (first X number of records).
 
