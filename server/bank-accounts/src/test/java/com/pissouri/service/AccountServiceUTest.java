@@ -106,7 +106,7 @@ public class AccountServiceUTest {
                 .setCreatedAt(ZonedDateTime.now(UTC))
                 .setUpdatedAt(ZonedDateTime.now(UTC));
 
-        when(accountRepository.findById(anyLong())).thenReturn(Optional.of(new Account()
+        when(accountRepository.findByIdAndIsActiveTrue(anyLong())).thenReturn(Optional.of(new Account()
                 .setId(42L)
                 .setNumber("PB100042")
                 .setCurrency("EUR")
@@ -114,6 +114,7 @@ public class AccountServiceUTest {
                 .setReference("4d2e6b5b-e1db-4227-b117-c3644b4f31a6")
                 .setBankRoute(bankRoute)
                 .setRegistration(registration)
+                .setActive(true)
                 .setCreatedAt(ZonedDateTime.of(LocalDateTime.of(2018, 1, 1, 0, 0), UTC))
                 .setUpdatedAt(ZonedDateTime.of(LocalDateTime.of(2018, 1, 1, 0, 0), UTC))));
     }

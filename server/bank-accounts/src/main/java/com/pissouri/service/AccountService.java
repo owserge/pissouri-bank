@@ -22,7 +22,7 @@ public class AccountService {
     public AccountDto getAccount(long id) {
 
         return accountRepository
-                .findById(id)
+                .findByIdAndIsActiveTrue(id)
                 .map(account -> conversionService.convert(account, AccountDto.class))
                 .orElseThrow(() -> new ResourceNotFoundException("Account not found"));
     }

@@ -61,6 +61,7 @@ INSERT INTO account (
     currency,
     balance,
     reference,
+    is_active,
     created_at,
     updated_at
 )
@@ -72,5 +73,6 @@ VALUES (
     'EUR',
     32750,
     '4d2e6b5b-e1db-4227-b117-c3644b4f31a6',
+    1,
     '2018-07-01',
     '2018-07-01');
