@@ -54,6 +54,11 @@ public class Account {
     private AccountRegistration registration;
 
     /**
+     * Whether or not this account is active
+     */
+    private boolean isActive;
+
+    /**
      * The exact date and time for when this account was created
      */
     private ZonedDateTime createdAt;
@@ -140,6 +145,17 @@ public class Account {
         return this;
     }
 
+    public boolean isActive() {
+
+        return isActive;
+    }
+
+    public Account setActive(boolean active) {
+
+        isActive = active;
+        return this;
+    }
+
     public ZonedDateTime getCreatedAt() {
 
         return createdAt;
@@ -188,6 +204,7 @@ public class Account {
                 ", reference='" + reference + '\'' +
                 ", bankRoute=" + bankRoute +
                 ", registration=" + registration +
+                ", isActive=" + isActive +
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +
                 '}';
