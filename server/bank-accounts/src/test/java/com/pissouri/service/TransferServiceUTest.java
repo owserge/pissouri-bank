@@ -21,6 +21,7 @@ import static java.time.ZoneOffset.UTC;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -80,7 +81,7 @@ public class TransferServiceUTest {
 
         givenTransfers();
 
-        List<TransferDto> transferDtoList = transferService.getTransfers();
+        List<TransferDto> transferDtoList = transferService.getTransfers(1L);
 
         assertThat(transferDtoList).isNotNull();
         assertThat(transferDtoList).isNotEmpty();
@@ -129,7 +130,7 @@ public class TransferServiceUTest {
 
     private void givenTransfers() {
 
-        when(transferRepository.findAll()).thenReturn(Arrays.asList(
+        when(transferRepository.findAllByAccountId(eq(1L))).thenReturn(Arrays.asList(
                 new Transfer()
                         .setId(1L)
                         .setAmount(100)
