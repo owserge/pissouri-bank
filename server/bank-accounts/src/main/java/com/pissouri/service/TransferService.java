@@ -32,10 +32,12 @@ public class TransferService {
                 .orElseThrow(() -> new ResourceNotFoundException(String.format("Transfer %d not found", id)));
     }
 
-    public List<TransferDto> getTransfers() {
+    public List<TransferDto> getTransfers(Long accountId) {
+
+        if (accountId == null || accountId <= 0) throw new IllegalArgumentException(String.format("Invalid argument %d", accountId));
 
         return transferRepository
-                .findAll()
+                .findAllByAccountId(accountId)
                 .stream()
                 .map(transfer -> conversionService.convert(transfer, TransferDto.class))
                 .collect(Collectors.toList());

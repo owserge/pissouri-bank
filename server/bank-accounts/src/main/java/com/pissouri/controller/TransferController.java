@@ -31,6 +31,6 @@ public class TransferController {
     @GetMapping(value = "/account/transfers", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseDto<List<TransferDto>> getTransfers(@ModelAttribute TransferSearchDto searchDto) {
 
-        return ResponseDto.ok(transferService.getTransfers()); //TODO search criteria
+        return ResponseDto.ok(transferService.getTransfers(1L)); //TODO search criteria
     }
 }
