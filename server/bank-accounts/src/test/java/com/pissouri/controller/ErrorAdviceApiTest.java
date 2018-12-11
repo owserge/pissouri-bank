@@ -25,7 +25,7 @@ public class ErrorAdviceApiTest extends RestApiTest {
     @Test
     public void shouldReturnInternalServerErrorWithResponseDto_whenUnhandledExceptionThrown() {
 
-        when(accountService.getAccount(anyLong())).thenThrow(new RuntimeException("Ah shit"));
+        when(accountService.getAccount(anyLong())).thenThrow(new RuntimeException());
 
         given()
                 .when()
@@ -35,7 +35,7 @@ public class ErrorAdviceApiTest extends RestApiTest {
                 .statusCode(500)
                 .contentType(ContentType.JSON)
                 .body("status_code", equalTo(5000))
-                .body("status_text", equalTo("Kaboom"))
+                .body("status_text", equalTo("Boom"))
                 .body("data", nullValue());
     }
 }

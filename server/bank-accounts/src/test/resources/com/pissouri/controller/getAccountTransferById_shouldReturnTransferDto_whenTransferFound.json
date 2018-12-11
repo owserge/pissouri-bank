@@ -1,0 +1,29 @@
+{
+  "status_code": 2000,
+  "status_text": "ok",
+  "data": {
+    "id": 1,
+    "amount": -2750,
+    "currency": "EUR",
+    "status": "ACCEPTED",
+    "originator": null,
+    "beneficiary": {
+      "full_name": "TERRA NOVA Ltd",
+      "iban": "CY75910000004587",
+      "bic": "CYBE17580",
+      "swift_code": null,
+      "account_number": null,
+      "sort_code": null,
+      "address": {
+        "street": "5 MAKARIOU Ave",
+        "city": "Nicosia",
+        "state": null,
+        "postal_code": "2200",
+        "country": "CY"
+      }
+    },
+    "balance_after": 18500,
+    "reference": "eec6671b-c0d4-4833-9779-f4cbdb117eb7",
+    "created_at": "2018-07-01T00:00:00+03:00"
+  }
+}

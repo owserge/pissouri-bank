@@ -19,4 +19,14 @@ abstract public class RestApiTest {
         RestAssured.port = serverPort;
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
     }
+
+    /**
+     * Read the contents of a resource file that should exist on the class path
+     * @param fileName The name of the file
+     * @return The contents of the file, null if file is empty
+     */
+    protected String readFromClasspath(String fileName) {
+
+        return Resources.getResourceAsString(fileName, getClass());
+    }
 }
