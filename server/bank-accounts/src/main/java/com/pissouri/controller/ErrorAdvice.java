@@ -22,7 +22,7 @@ public class ErrorAdvice {
 
         return new ResponseDto<>()
                 .setStatusCode(ResponseStatusCode.SERVER_ERROR)
-                .setStatusText("Kaboom");
+                .setStatusText("Boom");
     }
 
     @ExceptionHandler(ResourceNotFoundException.class)

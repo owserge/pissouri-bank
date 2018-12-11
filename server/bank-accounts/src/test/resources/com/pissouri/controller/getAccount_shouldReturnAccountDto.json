@@ -1,0 +1,41 @@
+{
+  "status_code": 2000,
+  "status_text": "ok",
+  "data": {
+    "id": 1,
+    "number": "PB100042",
+    "balance": 32750,
+    "currency": "EUR",
+    "reference": "4d2e6b5b-e1db-4227-b117-c3644b4f31a6",
+    "registration": {
+      "first_name": "John",
+      "last_name": "Cash",
+      "nationality": "GB",
+      "address": {
+        "street": "1 God Save the Queen Ave",
+        "city": "London",
+        "state": null,
+        "postal_code": "EC2700",
+        "country": "UK"
+      },
+      "dob": "1985-10-25"
+    },
+    "bank_route": {
+      "full_name": "Cash, John",
+      "iban": "PB63910000004543",
+      "bic": "PBBE10080",
+      "swift_code": "PB10080",
+      "account_number": "90001050",
+      "sort_code": "100090",
+      "address": {
+        "street": "1 King Ave",
+        "city": "Paphos",
+        "state": null,
+        "postal_code": "5200",
+        "country": "CY"
+      }
+    },
+    "created_at": "2018-07-01T00:00:00+03:00",
+    "updated_at": "2018-07-01T00:00:00+03:00"
+  }
+}
