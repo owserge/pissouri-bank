@@ -15,9 +15,9 @@ import static io.restassured.RestAssured.given;
 public class AccountControllerApiTest extends RestApiTest {
 
     @Test
-    public void getAccount_shouldReturnAccountDto() {
+    public void getAccount_shouldReturnAccountDto_whenAccountFound() {
 
-        String expectedBody = readFromClasspath("getAccount_shouldReturnAccountDto.json");
+        String expectedBody = readFromClasspath("getAccount_whenAccountFound.json");
 
         given()
                 .when()
