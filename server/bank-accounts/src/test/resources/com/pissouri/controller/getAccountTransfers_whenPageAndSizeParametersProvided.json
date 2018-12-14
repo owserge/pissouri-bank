@@ -1,0 +1,131 @@
+{
+  "status_code": 2000,
+  "status_text": "ok",
+  "data": [
+    {
+      "id": 5,
+      "amount": 37500,
+      "currency": "GBP",
+      "status": "PENDING",
+      "originator": {
+        "full_name": "TransferWise Ltd",
+        "iban": "GB75828000008310",
+        "bic": "GB8011287",
+        "swift_code": null,
+        "account_number": "92501054",
+        "sort_code": "100091",
+        "address": {
+          "street": "28 United City Str",
+          "city": "Manchester",
+          "state": null,
+          "postal_code": "EC7255",
+          "country": "UK"
+        }
+      },
+      "beneficiary": null,
+      "balance_after": 11500,
+      "reference": "3e52d8ba-04ff-41ea-aa80-59dd0485fb60",
+      "created_at": "2018-07-05T00:00:00+03:00"
+    },
+    {
+      "id": 4,
+      "amount": 12500,
+      "currency": "GBP",
+      "status": "ACCEPTED",
+      "originator": {
+        "full_name": "TransferWise Ltd",
+        "iban": "GB75828000008310",
+        "bic": "GB8011287",
+        "swift_code": null,
+        "account_number": "92501054",
+        "sort_code": "100091",
+        "address": {
+          "street": "28 United City Str",
+          "city": "Manchester",
+          "state": null,
+          "postal_code": "EC7255",
+          "country": "UK"
+        }
+      },
+      "beneficiary": null,
+      "balance_after": 11500,
+      "reference": "a482ef89-7d05-4610-98fb-26a86dfbc818",
+      "created_at": "2018-07-04T00:00:00+03:00"
+    },
+    {
+      "id": 3,
+      "amount": -1820,
+      "currency": "EUR",
+      "status": "ACCEPTED",
+      "originator": null,
+      "beneficiary": {
+        "full_name": "TERRA NOVA Ltd",
+        "iban": "CY75910000004587",
+        "bic": "CYBE17580",
+        "swift_code": null,
+        "account_number": null,
+        "sort_code": null,
+        "address": {
+          "street": "5 MAKARIOU Ave",
+          "city": "Nicosia",
+          "state": null,
+          "postal_code": "2200",
+          "country": "CY"
+        }
+      },
+      "balance_after": 11500,
+      "reference": "55bae2c9-92d0-4fdf-9283-e7ff088bc554",
+      "created_at": "2018-07-03T00:00:00+03:00"
+    },
+    {
+      "id": 2,
+      "amount": -3875,
+      "currency": "EUR",
+      "status": "ACCEPTED",
+      "originator": null,
+      "beneficiary": {
+        "full_name": "TERRA NOVA Ltd",
+        "iban": "CY75910000004587",
+        "bic": "CYBE17580",
+        "swift_code": null,
+        "account_number": null,
+        "sort_code": null,
+        "address": {
+          "street": "5 MAKARIOU Ave",
+          "city": "Nicosia",
+          "state": null,
+          "postal_code": "2200",
+          "country": "CY"
+        }
+      },
+      "balance_after": 16500,
+      "reference": "0d0173d9-898b-4e2f-a762-2af6bbc461eb",
+      "created_at": "2018-07-02T00:00:00+03:00"
+    },
+    {
+      "id": 1,
+      "amount": -2750,
+      "currency": "EUR",
+      "status": "ACCEPTED",
+      "originator": null,
+      "beneficiary": {
+        "full_name": "TERRA NOVA Ltd",
+        "iban": "CY75910000004587",
+        "bic": "CYBE17580",
+        "swift_code": null,
+        "account_number": null,
+        "sort_code": null,
+        "address": {
+          "street": "5 MAKARIOU Ave",
+          "city": "Nicosia",
+          "state": null,
+          "postal_code": "2200",
+          "country": "CY"
+        }
+      },
+      "balance_after": 18500,
+      "reference": "eec6671b-c0d4-4833-9779-f4cbdb117eb7",
+      "created_at": "2018-07-01T00:00:00+03:00"
+    }
+  ]
+}

@@ -2,8 +2,11 @@ package com.pissouri.service;
 
 import com.pissouri.data.TransferRepository;
 import com.pissouri.dto.TransferDto;
+import com.pissouri.dto.TransferSearchDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,9 +25,9 @@ public class TransferService {
         this.conversionService = conversionService;
     }
 
-    public TransferDto getTransfer(Long id) {
+    public TransferDto getTransfer(long id) {
 
-        if (id == null || id <= 0) throw new IllegalArgumentException(String.format("Invalid argument %d", id));
+        if (id <= 0) throw new IllegalArgumentException(String.format("Invalid argument %d", id));
 
         return transferRepository
                 .findById(id)
@@ -32,12 +35,16 @@ public class TransferService {
                 .orElseThrow(() -> new ResourceNotFoundException(String.format("Transfer %d not found", id)));
     }
 
-    public List<TransferDto> getTransfers(Long accountId) {
+    public List<TransferDto> getTransfers(long accountId, TransferSearchDto searchDto) {
 
-        if (accountId == null || accountId <= 0) throw new IllegalArgumentException(String.format("Invalid argument %d", accountId));
+        if (accountId <= 0) throw new IllegalArgumentException(String.format("Invalid argument %d", accountId));
+
+        int page = searchDto.getPage() != null ? searchDto.getPage() :  0;
+        int size = searchDto.getSize() != null ? searchDto.getSize() : 10;
+        PageRequest pageRequest = PageRequest.of(page, size, Sort.Direction.DESC, "id");
 
         return transferRepository
-                .findAllByAccountId(accountId)
+                .findAllByAccountId(accountId, pageRequest)
                 .stream()
                 .map(transfer -> conversionService.convert(transfer, TransferDto.class))
                 .collect(Collectors.toList());

@@ -21,6 +21,8 @@ public class AccountService {
 
     public AccountDto getAccount(long id) {
 
+        if (id <= 0) throw new IllegalArgumentException(String.format("Invalid argument %d", id));
+
         return accountRepository
                 .findByIdAndIsActiveTrue(id)
                 .map(account -> conversionService.convert(account, AccountDto.class))

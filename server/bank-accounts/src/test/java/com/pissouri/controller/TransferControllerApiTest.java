@@ -21,7 +21,7 @@ public class TransferControllerApiTest extends RestApiTest {
 
         long transferId = 1L;
 
-        String expectedResponseBody = readFromClasspath("getAccountTransferById_shouldReturnTransferDto_whenTransferFound.json");
+        String expectedResponseBody = readFromClasspath("getAccountTransferById_whenTransferFound.json");
 
         given()
                 .when()
@@ -34,9 +34,9 @@ public class TransferControllerApiTest extends RestApiTest {
     }
 
     @Test
-    public void getAccountTransfers_shouldReturnListOfTransferDto() {
+    public void getAccountTransfers_shouldReturnListOfTransferDto_whenTransfersFound() {
 
-        String expectedResponseBody = readFromClasspath("getAccountTransfers_shouldReturnListOfTransferDto.json");
+        String expectedResponseBody = readFromClasspath("getAccountTransfers_whenTransfersFound.json");
 
         given()
                 .when()
@@ -46,6 +46,81 @@ public class TransferControllerApiTest extends RestApiTest {
                 .statusCode(200)
                 .contentType(ContentType.JSON)
                 .body(equalToJson(expectedResponseBody));
+    }
+
+    @Test
+    public void getAccountTransfers_shouldReturnPartOfListOfTransferDto_whenSizeParameterIsProvided() {
+
+        String expectedResponseBody = readFromClasspath("getAccountTransfers_whenPageParameterIsProvided.json");
+
+        given()
+                .when()
+                .get("/account/transfers?size=5")
+                .then()
+                .assertThat()
+                .statusCode(200)
+                .contentType(ContentType.JSON)
+                .body(equalToJson(expectedResponseBody));
+    }
+
+    @Test
+    public void getAccountTransfers_shouldReturnClientError_whenSizeParameterIsEqualToZero() {
+
+        given()
+                .when()
+                .get("/account/transfers?size=0")
+                .then()
+                .assertThat()
+                .statusCode(400)
+                .contentType(ContentType.JSON)
+                .body("status_code", equalTo(4000))
+                .body("status_text", equalTo("Page size must not be less than one!"))
+                .body("data", nullValue());
+    }
+
+    @Test
+    public void getAccountTransfers_shouldReturnDefaultListOfTransferDto_whenSizeParameterIsLessThanZero() {
+
+        given()
+                .when()
+                .get("/account/transfers?size=-5")
+                .then()
+                .assertThat()
+                .statusCode(400)
+                .contentType(ContentType.JSON)
+                .body("status_code", equalTo(4000))
+                .body("status_text", equalTo("Page size must not be less than one!"))
+                .body("data", nullValue());
+    }
+
+    @Test
+    public void getAccountTransfers_shouldReturnPartOfListOfTransferDto_whenPageAndSizeParametersProvided() {
+
+        String expectedResponseBody = readFromClasspath("getAccountTransfers_whenPageAndSizeParametersProvided.json");
+
+        given()
+                .when()
+                .get("/account/transfers?page=1&size=5")
+                .then()
+                .assertThat()
+                .statusCode(200)
+                .contentType(ContentType.JSON)
+                .body(equalToJson(expectedResponseBody));
+    }
+
+    @Test
+    public void getAccountTransfers_shouldReturnClientError_whenPageParameterIsLessThanZero() {
+
+        given()
+                .when()
+                .get("/account/transfers?page=-5")
+                .then()
+                .assertThat()
+                .statusCode(400)
+                .contentType(ContentType.JSON)
+                .body("status_code", equalTo(4000))
+                .body("status_text", equalTo("Page index must not be less than zero!"))
+                .body("data", nullValue());
     }
 
     @Test
