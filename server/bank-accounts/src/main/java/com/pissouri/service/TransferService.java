@@ -5,7 +5,7 @@ import com.pissouri.dto.TransferDto;
 import com.pissouri.dto.TransferSearchDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -39,12 +39,10 @@ public class TransferService {
 
         if (accountId <= 0) throw new IllegalArgumentException(String.format("Invalid argument %d", accountId));
 
-        int page = searchDto.getPage() != null ? searchDto.getPage() :  0;
-        int size = searchDto.getSize() != null ? searchDto.getSize() : 10;
-        PageRequest pageRequest = PageRequest.of(page, size, Sort.Direction.DESC, "id");
+        Pageable pageable = Paging.of(searchDto, Sort.by("id").descending());
 
         return transferRepository
-                .findAllByAccountId(accountId, pageRequest)
+                .findAllByAccountId(accountId, pageable)
                 .stream()
                 .map(transfer -> conversionService.convert(transfer, TransferDto.class))
                 .collect(Collectors.toList());

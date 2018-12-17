@@ -3,9 +3,9 @@ package com.pissouri.dto;
 import java.util.Objects;
 
 /**
- * Set of search parameters, used for filtering a list of {@link TransferDto}
+ * A {@link PageableDto} set of search parameters, used for filtering through a list of {@link TransferDto}
  */
-public class TransferSearchDto {
+public class TransferSearchDto implements PageableDto {
 
     /**
      * Type of bank transfer, as defined by {@link TransferTypeCode}
@@ -49,6 +49,7 @@ public class TransferSearchDto {
         return this;
     }
 
+    @Override
     public Integer getSize() {
 
         return size;
@@ -60,6 +61,7 @@ public class TransferSearchDto {
         return this;
     }
 
+    @Override
     public Integer getPage() {
 
         return page;
