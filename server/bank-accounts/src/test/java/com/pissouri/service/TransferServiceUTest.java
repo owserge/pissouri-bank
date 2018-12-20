@@ -46,7 +46,7 @@ public class TransferServiceUTest {
 
         givenTransfer();
 
-        TransferDto transferDto = transferService.getTransfer(9L);
+        TransferDto transferDto = transferService.getTransfer(1L, 9L);
 
         assertThatTransferDtoIsValid(transferDto);
     }
@@ -54,15 +54,31 @@ public class TransferServiceUTest {
     @Test
     public void getTransferById_shouldThrowResourceNotFoundException_whenTransferNotFound() {
 
-        assertThatThrownBy(() -> transferService.getTransfer(Long.MAX_VALUE))
+        assertThatThrownBy(() -> transferService.getTransfer(1L, Long.MAX_VALUE))
                 .isInstanceOf(ResourceNotFoundException.class)
                 .hasMessage(String.format("Transfer %d not found", Long.MAX_VALUE));
     }
 
     @Test
+    public void getTransferById_shouldThrowIllegalArgumentException_whenAccountIdIsEqualToZero() {
+
+        assertThatThrownBy(() -> transferService.getTransfer(0L, 1L))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("Invalid argument 0");
+    }
+
+    @Test
+    public void getTransferById_shouldThrowIllegalArgumentException_whenAccountIdIsLessThanZero() {
+
+        assertThatThrownBy(() -> transferService.getTransfer(-1L, 1L))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("Invalid argument -1");
+    }
+
+    @Test
     public void getTransferById_shouldThrowIllegalArgumentException_whenTransferIdIsEqualToZero() {
 
-        assertThatThrownBy(() -> transferService.getTransfer(0L))
+        assertThatThrownBy(() -> transferService.getTransfer(1L, 0L))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Invalid argument 0");
     }
@@ -70,7 +86,7 @@ public class TransferServiceUTest {
     @Test
     public void getTransferById_shouldThrowIllegalArgumentException_whenTransferIdIsLessThanZero() {
 
-        assertThatThrownBy(() -> transferService.getTransfer(-1L))
+        assertThatThrownBy(() -> transferService.getTransfer(1L, -1L))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Invalid argument -1");
     }
@@ -104,7 +120,7 @@ public class TransferServiceUTest {
 
     private void givenTransfer() {
 
-        when(transferRepository.findById(anyLong()))
+        when(transferRepository.findByIdAndAccountId(anyLong(), eq(1L)))
                 .thenReturn(Optional.of(new Transfer()
                         .setId(9L)
                         .setAmount(100)

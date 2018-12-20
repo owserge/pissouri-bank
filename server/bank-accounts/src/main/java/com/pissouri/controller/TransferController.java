@@ -25,7 +25,7 @@ public class TransferController {
     @GetMapping(value = "/account/transfers/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseDto<TransferDto> getTransfer(@PathVariable("id") Long id) {
 
-        return ResponseDto.ok(transferService.getTransfer(id));
+        return ResponseDto.ok(transferService.getTransfer(1L, id));
     }
 
     @GetMapping(value = "/account/transfers", produces = MediaType.APPLICATION_JSON_VALUE)
