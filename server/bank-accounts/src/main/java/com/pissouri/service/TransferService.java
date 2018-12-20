@@ -25,19 +25,21 @@ public class TransferService {
         this.conversionService = conversionService;
     }
 
-    public TransferDto getTransfer(long id) {
+    public TransferDto getTransfer(long accountId, long id) {
 
-        if (id <= 0) throw new IllegalArgumentException(String.format("Invalid argument %d", id));
+        Arguments.must(accountId, accountId > 0);
+
+        Arguments.must(id, id > 0);
 
         return transferRepository
-                .findById(id)
+                .findByIdAndAccountId(id, accountId)
                 .map(transfer -> conversionService.convert(transfer, TransferDto.class))
                 .orElseThrow(() -> new ResourceNotFoundException(String.format("Transfer %d not found", id)));
     }
 
     public List<TransferDto> getTransfers(long accountId, TransferSearchDto searchDto) {
 
-        if (accountId <= 0) throw new IllegalArgumentException(String.format("Invalid argument %d", accountId));
+        Arguments.must(accountId, accountId > 0);
 
         Pageable pageable = Paging.of(searchDto, Sort.by("id").descending());
 

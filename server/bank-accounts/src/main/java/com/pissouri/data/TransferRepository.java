@@ -10,7 +10,7 @@ import java.util.Optional;
 @Repository
 public interface TransferRepository extends JpaRepository<Transfer, Long> {
 
-    Optional<Transfer> findById(Long id);
+    Optional<Transfer> findByIdAndAccountId(Long id, Long accountId);
 
     Page<Transfer> findAllByAccountId(Long accountId, Pageable pageable);
 }

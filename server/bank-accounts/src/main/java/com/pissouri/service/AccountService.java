@@ -21,7 +21,7 @@ public class AccountService {
 
     public AccountDto getAccount(long id) {
 
-        if (id <= 0) throw new IllegalArgumentException(String.format("Invalid argument %d", id));
+        Arguments.must(id, id > 0);
 
         return accountRepository
                 .findByIdAndIsActiveTrue(id)
