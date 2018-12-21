@@ -1,6 +1,6 @@
 package com.pissouri.data;
 
-import com.pissouri.dto.TransferStatusCode;
+import com.pissouri.common.TransferStatusCode;
 
 import javax.persistence.*;
 import java.time.ZonedDateTime;

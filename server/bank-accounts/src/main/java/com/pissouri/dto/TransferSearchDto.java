@@ -1,5 +1,8 @@
 package com.pissouri.dto;
 
+import com.pissouri.common.TransferStatusCode;
+import com.pissouri.common.TransferTypeCode;
+
 import java.util.Objects;
 
 /**
