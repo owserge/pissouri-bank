@@ -6,6 +6,7 @@ import com.pissouri.converter.TransferDtoConverter;
 import com.pissouri.data.BankRoute;
 import com.pissouri.data.Transfer;
 import com.pissouri.data.TransferRepository;
+import com.pissouri.data.TransferSpecification;
 import com.pissouri.dto.TransferDto;
 import com.pissouri.dto.TransferSearchDto;
 import org.junit.Before;
@@ -146,7 +147,7 @@ public class TransferServiceUTest {
     private void givenTransfers() {
 
         Mockito
-                .when(transferRepository.findAllByAccountId(eq(1L), any(Pageable.class)))
+                .when(transferRepository.findAll(any(TransferSpecification.class), any(Pageable.class)))
                 .thenReturn(new PageImpl<>(Arrays.asList(
                         new Transfer()
                                 .setId(1L)

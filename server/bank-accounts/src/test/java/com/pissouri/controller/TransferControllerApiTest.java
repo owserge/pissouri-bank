@@ -49,6 +49,141 @@ public class TransferControllerApiTest extends RestApiTest {
     }
 
     @Test
+    public void getAccountTransfers_shouldReturnListOfINWARDTransferDto_whenTypeParameterIsINWARD() {
+
+        String expectedResponseBody = readFromClasspath("getAccountTransfers_whenTypeParameterIsINWARD.json");
+
+        given()
+                .when()
+                .get("/account/transfers?type=IN")
+                .then()
+                .assertThat()
+                .statusCode(200)
+                .contentType(ContentType.JSON)
+                .body(equalToJson(expectedResponseBody));
+    }
+
+    @Test
+    public void getAccountTransfers_shouldReturnListOfOUTWARDTransferDto_whenTypeParameterIsOUTWARD() {
+
+        String expectedResponseBody = readFromClasspath("getAccountTransfers_whenTypeParameterIsOUTWARD.json");
+
+        given()
+                .when()
+                .get("/account/transfers?type=OUT")
+                .then()
+                .assertThat()
+                .statusCode(200)
+                .contentType(ContentType.JSON)
+                .body(equalToJson(expectedResponseBody));
+    }
+
+    @Test
+    public void getAccountTransfers_shouldReturnListOfTransferDto_whenTypeParameterIsInvalid() {
+
+        String expectedResponseBody = readFromClasspath("getAccountTransfers_whenTransfersFound.json");
+
+        given()
+                .when()
+                .get("/account/transfers?type=FOOBAR")
+                .then()
+                .assertThat()
+                .statusCode(200)
+                .contentType(ContentType.JSON)
+                .body(equalToJson(expectedResponseBody));
+    }
+
+    @Test
+    public void getAccountTransfers_shouldReturnListOfACCEPTEDTransferDto_whenStatusParameterIsACCEPTED() {
+
+        String expectedResponseBody = readFromClasspath("getAccountTransfers_whenStatusParameterIsACCEPTED.json");
+
+        given()
+                .when()
+                .get("/account/transfers?status=ACCEPTED")
+                .then()
+                .assertThat()
+                .statusCode(200)
+                .contentType(ContentType.JSON)
+                .body(equalToJson(expectedResponseBody));
+    }
+
+    @Test
+    public void getAccountTransfers_shouldReturnListOfPENDINGTransferDto_whenStatusParameterIsPENDING() {
+
+        String expectedResponseBody = readFromClasspath("getAccountTransfers_whenStatusParameterIsPENDING.json");
+
+        given()
+                .when()
+                .get("/account/transfers?status=PENDING")
+                .then()
+                .assertThat()
+                .statusCode(200)
+                .contentType(ContentType.JSON)
+                .body(equalToJson(expectedResponseBody));
+    }
+
+    @Test
+    public void getAccountTransfers_shouldReturnListOfREJECTEDTransferDto_whenStatusParameterIsREJECTED() {
+
+        String expectedResponseBody = readFromClasspath("getAccountTransfers_whenStatusParameterIsREJECTED.json");
+
+        given()
+                .when()
+                .get("/account/transfers?status=REJECTED")
+                .then()
+                .assertThat()
+                .statusCode(200)
+                .contentType(ContentType.JSON)
+                .body(equalToJson(expectedResponseBody));
+    }
+
+    @Test
+    public void getAccountTransfers_shouldReturnEmptyListOfTransferDto_whenStatusParameterIsInvalid() {
+
+        String expectedResponseBody = readFromClasspath("getAccountTransfers_whenStatusParameterIsInvalid.json");
+
+        given()
+                .when()
+                .get("/account/transfers?status=FOOBAR")
+                .then()
+                .assertThat()
+                .statusCode(200)
+                .contentType(ContentType.JSON)
+                .body(equalToJson(expectedResponseBody));
+    }
+
+    @Test
+    public void getAccountTransfers_shouldReturnListOfTransferDto_whenStatusAndTypeParametersProvided() {
+
+        String expectedResponseBody = readFromClasspath("getAccountTransfers_whenStatusAndTypeParametersProvided.json");
+
+        given()
+                .when()
+                .get("/account/transfers?type=OUT&status=ACCEPTED")
+                .then()
+                .assertThat()
+                .statusCode(200)
+                .contentType(ContentType.JSON)
+                .body(equalToJson(expectedResponseBody));
+    }
+
+    @Test
+    public void getAccountTransfers_shouldReturnEmptyListOfTransferDto_whenTypeParameterIsValidAndStatusParameterIsInvalid() {
+
+        String expectedResponseBody = readFromClasspath("getAccountTransfers_whenStatusParameterIsInvalid.json");
+
+        given()
+                .when()
+                .get("/account/transfers?type=OUT&status=FOOBAR")
+                .then()
+                .assertThat()
+                .statusCode(200)
+                .contentType(ContentType.JSON)
+                .body(equalToJson(expectedResponseBody));
+    }
+
+    @Test
     public void getAccountTransfers_shouldReturnPartOfListOfTransferDto_whenSizeParameterIsProvided() {
 
         String expectedResponseBody = readFromClasspath("getAccountTransfers_whenPageParameterIsProvided.json");
@@ -121,6 +256,21 @@ public class TransferControllerApiTest extends RestApiTest {
                 .body("status_code", equalTo(4000))
                 .body("status_text", equalTo("Page index must not be less than zero!"))
                 .body("data", nullValue());
+    }
+
+    @Test
+    public void getAccountTransfers_shouldReturnListOfTransferDto_whenStatusAndTypeAndPageAndSizeProvided() {
+
+        String expectedResponseBody = readFromClasspath("getAccountTransfers_whenStatusAndTypeAndPageAndSizeProvided.json");
+
+        given()
+                .when()
+                .get("/account/transfers?type=OUT&status=ACCEPTED&page=1&size=1")
+                .then()
+                .assertThat()
+                .statusCode(200)
+                .contentType(ContentType.JSON)
+                .body(equalToJson(expectedResponseBody));
     }
 
     @Test
