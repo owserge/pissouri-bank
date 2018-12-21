@@ -1,4 +1,4 @@
-package com.pissouri.dto;
+package com.pissouri.common;
 
 import java.util.HashSet;
 import java.util.Set;

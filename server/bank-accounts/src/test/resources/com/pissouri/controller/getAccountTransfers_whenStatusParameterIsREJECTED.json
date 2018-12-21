@@ -1,0 +1,31 @@
+{
+  "status_code": 2000,
+  "status_text": "ok",
+  "data": [
+    {
+      "id": 8,
+      "amount": 27500,
+      "currency": "USD",
+      "status": "REJECTED",
+      "originator": {
+        "full_name": "PayPal US Inc.",
+        "iban": "US95910000874090",
+        "bic": "US9010095",
+        "swift_code": null,
+        "account_number": null,
+        "sort_code": null,
+        "address": {
+          "street": "1 Times Square Ave",
+          "city": "NYC",
+          "state": null,
+          "postal_code": "7500",
+          "country": "US"
+        }
+      },
+      "beneficiary": null,
+      "balance_after": 18500,
+      "reference": "9d25d635-783a-4b25-bb47-c434036deab6",
+      "created_at": "2018-07-08T00:00:00+03:00"
+    }
+  ]
+}

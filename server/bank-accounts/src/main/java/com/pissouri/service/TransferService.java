@@ -1,6 +1,7 @@
 package com.pissouri.service;
 
 import com.pissouri.data.TransferRepository;
+import com.pissouri.data.TransferSpecification;
 import com.pissouri.dto.TransferDto;
 import com.pissouri.dto.TransferSearchDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,10 +42,15 @@ public class TransferService {
 
         Arguments.must(accountId, accountId > 0);
 
+        TransferSpecification specification = new TransferSpecification()
+                .setAccountId(accountId)
+                .setStatus(searchDto.getStatus())
+                .setType(searchDto.getType());
+
         Pageable pageable = Paging.of(searchDto, Sort.by("id").descending());
 
         return transferRepository
-                .findAllByAccountId(accountId, pageable)
+                .findAll(specification, pageable)
                 .stream()
                 .map(transfer -> conversionService.convert(transfer, TransferDto.class))
                 .collect(Collectors.toList());
