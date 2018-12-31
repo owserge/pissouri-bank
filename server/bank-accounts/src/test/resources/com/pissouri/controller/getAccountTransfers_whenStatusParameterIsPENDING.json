@@ -1,0 +1,81 @@
+{
+  "status_code": 2000,
+  "status_text": "ok",
+  "data": [
+    {
+      "id": 7,
+      "amount": 77500,
+      "currency": "USD",
+      "status": "PENDING",
+      "originator": {
+        "full_name": "PayPal US Inc.",
+        "iban": "US95910000874090",
+        "bic": "US9010095",
+        "swift_code": null,
+        "account_number": null,
+        "sort_code": null,
+        "address": {
+          "street": "1 Times Square Ave",
+          "city": "NYC",
+          "state": null,
+          "postal_code": "7500",
+          "country": "US"
+        }
+      },
+      "beneficiary": null,
+      "balance_after": 18500,
+      "reference": "?",
+      "created_at": "2018-07-07T00:00:00+03:00"
+    },
+    {
+      "id": 6,
+      "amount": -500,
+      "currency": "AUD",
+      "status": "PENDING",
+      "originator": null,
+      "beneficiary": {
+        "full_name": "Jack Rabbit",
+        "iban": "AU63910000004543",
+        "bic": null,
+        "swift_code": "AU9004559087",
+        "account_number": null,
+        "sort_code": null,
+        "address": {
+          "street": "13 Music and Coffee Str",
+          "city": "Melbourne",
+          "state": null,
+          "postal_code": "ML5211",
+          "country": "AU"
+        }
+      },
+      "balance_after": 11000,
+      "reference": "04582a1c-6e5e-4e3e-867c-5a34a02e25c4",
+      "created_at": "2018-07-06T00:00:00+03:00"
+    },
+    {
+      "id": 5,
+      "amount": 37500,
+      "currency": "GBP",
+      "status": "PENDING",
+      "originator": {
+        "full_name": "TransferWise Ltd",
+        "iban": "GB75828000008310",
+        "bic": "GB8011287",
+        "swift_code": null,
+        "account_number": "92501054",
+        "sort_code": "100091",
+        "address": {
+          "street": "28 United City Str",
+          "city": "Manchester",
+          "state": null,
+          "postal_code": "EC7255",
+          "country": "UK"
+        }
+      },
+      "beneficiary": null,
+      "balance_after": 11500,
+      "reference": "3e52d8ba-04ff-41ea-aa80-59dd0485fb60",
+      "created_at": "2018-07-05T00:00:00+03:00"
+    }
+  ]
+}

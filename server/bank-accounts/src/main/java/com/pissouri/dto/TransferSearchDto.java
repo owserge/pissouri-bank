@@ -1,11 +1,14 @@
 package com.pissouri.dto;
 
+import com.pissouri.common.TransferStatusCode;
+import com.pissouri.common.TransferTypeCode;
+
 import java.util.Objects;
 
 /**
- * Set of search parameters, used for filtering a list of {@link TransferDto}
+ * A {@link PageableDto} set of search parameters, used for filtering through a list of {@link TransferDto}
  */
-public class TransferSearchDto {
+public class TransferSearchDto implements PageableDto {
 
     /**
      * Type of bank transfer, as defined by {@link TransferTypeCode}
@@ -20,12 +23,12 @@ public class TransferSearchDto {
     /**
      * Number of transfers per page
      */
-    private int pageSize;
+    private Integer size;
 
     /**
      * The transfers page to be retrieved
      */
-    private int page;
+    private Integer page;
 
     public String getType() {
 
@@ -49,23 +52,25 @@ public class TransferSearchDto {
         return this;
     }
 
-    public int getPageSize() {
+    @Override
+    public Integer getSize() {
 
-        return pageSize;
+        return size;
     }
 
-    public TransferSearchDto setPageSize(int pageSize) {
+    public TransferSearchDto setSize(Integer size) {
 
-        this.pageSize = pageSize;
+        this.size = size;
         return this;
     }
 
-    public int getPage() {
+    @Override
+    public Integer getPage() {
 
         return page;
     }
 
-    public TransferSearchDto setPage(int page) {
+    public TransferSearchDto setPage(Integer page) {
 
         this.page = page;
         return this;
@@ -77,16 +82,16 @@ public class TransferSearchDto {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TransferSearchDto that = (TransferSearchDto) o;
-        return pageSize == that.pageSize &&
-                page == that.page &&
-                Objects.equals(type, that.type) &&
-                Objects.equals(status, that.status);
+        return Objects.equals(type, that.type) &&
+                Objects.equals(status, that.status) &&
+                Objects.equals(size, that.size) &&
+                Objects.equals(page, that.page);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(type, status, pageSize, page);
+        return Objects.hash(type, status, size, page);
     }
 
     @Override
@@ -95,7 +100,7 @@ public class TransferSearchDto {
         return "TransferSearchDto{" +
                 "type='" + type + '\'' +
                 ", status='" + status + '\'' +
-                ", pageSize=" + pageSize +
+                ", size=" + size +
                 ", page=" + page +
                 '}';
     }

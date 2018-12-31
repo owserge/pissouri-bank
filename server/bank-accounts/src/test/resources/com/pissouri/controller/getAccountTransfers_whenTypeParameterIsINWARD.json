@@ -1,0 +1,106 @@
+{
+  "status_code": 2000,
+  "status_text": "ok",
+  "data": [
+    {
+      "id": 8,
+      "amount": 27500,
+      "currency": "USD",
+      "status": "REJECTED",
+      "originator": {
+        "full_name": "PayPal US Inc.",
+        "iban": "US95910000874090",
+        "bic": "US9010095",
+        "swift_code": null,
+        "account_number": null,
+        "sort_code": null,
+        "address": {
+          "street": "1 Times Square Ave",
+          "city": "NYC",
+          "state": null,
+          "postal_code": "7500",
+          "country": "US"
+        }
+      },
+      "beneficiary": null,
+      "balance_after": 18500,
+      "reference": "9d25d635-783a-4b25-bb47-c434036deab6",
+      "created_at": "2018-07-08T00:00:00+03:00"
+    },
+    {
+      "id": 7,
+      "amount": 77500,
+      "currency": "USD",
+      "status": "PENDING",
+      "originator": {
+        "full_name": "PayPal US Inc.",
+        "iban": "US95910000874090",
+        "bic": "US9010095",
+        "swift_code": null,
+        "account_number": null,
+        "sort_code": null,
+        "address": {
+          "street": "1 Times Square Ave",
+          "city": "NYC",
+          "state": null,
+          "postal_code": "7500",
+          "country": "US"
+        }
+      },
+      "beneficiary": null,
+      "balance_after": 18500,
+      "reference": "?",
+      "created_at": "2018-07-07T00:00:00+03:00"
+    },
+    {
+      "id": 5,
+      "amount": 37500,
+      "currency": "GBP",
+      "status": "PENDING",
+      "originator": {
+        "full_name": "TransferWise Ltd",
+        "iban": "GB75828000008310",
+        "bic": "GB8011287",
+        "swift_code": null,
+        "account_number": "92501054",
+        "sort_code": "100091",
+        "address": {
+          "street": "28 United City Str",
+          "city": "Manchester",
+          "state": null,
+          "postal_code": "EC7255",
+          "country": "UK"
+        }
+      },
+      "beneficiary": null,
+      "balance_after": 11500,
+      "reference": "3e52d8ba-04ff-41ea-aa80-59dd0485fb60",
+      "created_at": "2018-07-05T00:00:00+03:00"
+    },
+    {
+      "id": 4,
+      "amount": 12500,
+      "currency": "GBP",
+      "status": "ACCEPTED",
+      "originator": {
+        "full_name": "TransferWise Ltd",
+        "iban": "GB75828000008310",
+        "bic": "GB8011287",
+        "swift_code": null,
+        "account_number": "92501054",
+        "sort_code": "100091",
+        "address": {
+          "street": "28 United City Str",
+          "city": "Manchester",
+          "state": null,
+          "postal_code": "EC7255",
+          "country": "UK"
+        }
+      },
+      "beneficiary": null,
+      "balance_after": 11500,
+      "reference": "a482ef89-7d05-4610-98fb-26a86dfbc818",
+      "created_at": "2018-07-04T00:00:00+03:00"
+    }
+  ]
+}

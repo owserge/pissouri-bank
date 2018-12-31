@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS account (
     balance         BIGINT(32)      UNSIGNED NOT NULL DEFAULT 0,
     currency        CHAR(3)         NOT NULL,
     reference       VARCHAR(512)    NOT NULL,
+    is_active       TINYINT(1)      NOT NULL DEFAULT 0,
     created_at      DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at      DATETIME        NULL ON UPDATE CURRENT_TIMESTAMP,
 

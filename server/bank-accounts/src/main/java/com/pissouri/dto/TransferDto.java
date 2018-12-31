@@ -1,5 +1,7 @@
 package com.pissouri.dto;
 
+import com.pissouri.common.TransferStatusCode;
+
 import java.time.ZonedDateTime;
 import java.util.Objects;
 

@@ -1,6 +1,6 @@
 package com.pissouri.data;
 
-import com.pissouri.dto.TransferStatusCode;
+import com.pissouri.common.TransferStatusCode;
 
 import javax.persistence.*;
 import java.time.ZonedDateTime;
@@ -17,6 +17,13 @@ public class Transfer {
      */
     @Id
     private long id;
+
+    /**
+     * Account associated with the transfer (originator or beneficiary)
+     */
+    @ManyToOne
+    @JoinColumn(name = "account_id")
+    private Account account;
 
     /**
      * Transfer amount, positive (credit) or negative (debit)
@@ -63,6 +70,17 @@ public class Transfer {
     public Transfer setId(long id) {
 
         this.id = id;
+        return this;
+    }
+
+    public Account getAccount() {
+
+        return account;
+    }
+
+    public Transfer setAccount(Account account) {
+
+        this.account = account;
         return this;
     }
 
@@ -163,6 +181,7 @@ public class Transfer {
 
         return "Transfer{" +
                 "id=" + id +
+                ", account=" + account +
                 ", amount=" + amount +
                 ", currency='" + currency + '\'' +
                 ", status='" + status + '\'' +

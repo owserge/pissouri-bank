@@ -1,9 +1,13 @@
 package com.pissouri.service;
 
 import com.pissouri.data.TransferRepository;
+import com.pissouri.data.TransferSpecification;
 import com.pissouri.dto.TransferDto;
+import com.pissouri.dto.TransferSearchDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,20 +26,31 @@ public class TransferService {
         this.conversionService = conversionService;
     }
 
-    public TransferDto getTransfer(Long id) {
+    public TransferDto getTransfer(long accountId, long id) {
 
-        if (id == null || id <= 0) throw new IllegalArgumentException(String.format("Invalid argument %d", id));
+        Arguments.must(accountId, accountId > 0);
+
+        Arguments.must(id, id > 0);
 
         return transferRepository
-                .findById(id)
+                .findByIdAndAccountId(id, accountId)
                 .map(transfer -> conversionService.convert(transfer, TransferDto.class))
                 .orElseThrow(() -> new ResourceNotFoundException(String.format("Transfer %d not found", id)));
     }
 
-    public List<TransferDto> getTransfers() {
+    public List<TransferDto> getTransfers(long accountId, TransferSearchDto searchDto) {
+
+        Arguments.must(accountId, accountId > 0);
+
+        TransferSpecification specification = new TransferSpecification()
+                .setAccountId(accountId)
+                .setStatus(searchDto.getStatus())
+                .setType(searchDto.getType());
+
+        Pageable pageable = Paging.of(searchDto, Sort.by("id").descending());
 
         return transferRepository
-                .findAll()
+                .findAll(specification, pageable)
                 .stream()
                 .map(transfer -> conversionService.convert(transfer, TransferDto.class))
                 .collect(Collectors.toList());

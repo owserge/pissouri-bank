@@ -12,7 +12,6 @@ import org.junit.Test;
 import org.springframework.core.convert.ConversionService;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.util.Optional;
 
@@ -73,8 +72,8 @@ public class AccountServiceUTest {
         assertThat(accountDto.getBankRoute().getAddress().getPostalCode()).isEqualTo("5200");
         assertThat(accountDto.getBankRoute().getAddress().getCountry()).isEqualTo("CY");
 
-        assertThat(accountDto.getCreatedAt()).isEqualTo(ZonedDateTime.of(LocalDateTime.of(2018, 1, 1, 0, 0), UTC));
-        assertThat(accountDto.getUpdatedAt()).isEqualTo(ZonedDateTime.of(LocalDateTime.of(2018, 1, 1, 0, 0), UTC));
+        assertThat(accountDto.getCreatedAt()).isEqualTo(LocalDate.ofYearDay(2018, 1).atStartOfDay(UTC));
+        assertThat(accountDto.getUpdatedAt()).isEqualTo(LocalDate.ofYearDay(2018, 1).atStartOfDay(UTC));
     }
 
     private void givenAccount() {
@@ -106,7 +105,7 @@ public class AccountServiceUTest {
                 .setCreatedAt(ZonedDateTime.now(UTC))
                 .setUpdatedAt(ZonedDateTime.now(UTC));
 
-        when(accountRepository.findById(anyLong())).thenReturn(Optional.of(new Account()
+        when(accountRepository.findByIdAndIsActiveTrue(anyLong())).thenReturn(Optional.of(new Account()
                 .setId(42L)
                 .setNumber("PB100042")
                 .setCurrency("EUR")
@@ -114,7 +113,8 @@ public class AccountServiceUTest {
                 .setReference("4d2e6b5b-e1db-4227-b117-c3644b4f31a6")
                 .setBankRoute(bankRoute)
                 .setRegistration(registration)
-                .setCreatedAt(ZonedDateTime.of(LocalDateTime.of(2018, 1, 1, 0, 0), UTC))
-                .setUpdatedAt(ZonedDateTime.of(LocalDateTime.of(2018, 1, 1, 0, 0), UTC))));
+                .setActive(true)
+                .setCreatedAt(LocalDate.ofYearDay(2018, 1).atStartOfDay(UTC))
+                .setUpdatedAt(LocalDate.ofYearDay(2018, 1).atStartOfDay(UTC))));
     }
 }

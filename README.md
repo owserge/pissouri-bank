@@ -29,3 +29,4 @@ This is about a group of people experimenting with technologies. If you came her
 ### Front-end
 
 * UI Requirements [here](./resource/UI.md)
+* How to install and run the front-end [here](./client/README.md)
